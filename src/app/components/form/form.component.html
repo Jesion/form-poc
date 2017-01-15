@@ -1,16 +1,16 @@
 <form [formGroup]="myForm">
 
-    <div class="row">
-        <label>Date One:</label>
+    <div class="row">      
+        <label for="date1">Date One:</label>
         <date-control #date1 
             [initialValue]="'20000101'"           
             [required]="true"
             [allowFutureDate]="false">
-        </date-control>
+        </date-control>    
     </div>
 
     <div class="row">
-        <label>Date Two:</label>
+        <label for="date2">Date Two:</label>
         <date-control #date2
             [initialValue]="'20030101'"
             [allowFutureDate]="false">
