@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
 import { DateControlComponent } from './components/controls/date.component';
 import { NameControlComponent } from './components/controls/name.component';
+import { ControlErrorComponent } from './components/controls/error/error.component';
 
 @NgModule({
     declarations: [ 
@@ -17,7 +18,8 @@ import { NameControlComponent } from './components/controls/name.component';
         HostComponent,
         FormComponent,
         DateControlComponent,
-        NameControlComponent
+        NameControlComponent,
+        ControlErrorComponent
     ],
     imports: [ 
         routing,
