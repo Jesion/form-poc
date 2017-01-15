@@ -1,8 +1,8 @@
 <form [formGroup]="myForm">
 
     <div class="row">      
-        <label for="date1">Date One:</label>
-        <date-control #date1 
+        <label for="dateX">Date One:</label>
+        <date-control #date1 id="date1"
             [initialValue]="'20000101'"           
             [required]="true"
             [allowFutureDate]="false">
@@ -35,7 +35,9 @@
 
     <div class="row" *ngIf="hidden==false">
         <label>Name:</label>
-        <name-control #dynamic></name-control>
+        <name-control 
+            [initialValue]="'Jesionek'" 
+            #dynamic></name-control>
     </div> 
 
     <button type="submit"
