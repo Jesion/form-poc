@@ -14,8 +14,6 @@ export class ControlErrorComponent {
   @Input()
   public errorKeys: Array<string>;
 
-  public errors: Array<string>;
-
   public hasError(): boolean {
     let error: boolean = false;
     if (this.errorKeys && this.baseCtrl) {
