@@ -201,10 +201,10 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   }
 
   protected setValidators() {
-    this._baseCtrl.setValidators(this.getBaseValidators());
+    this._baseCtrl.setValidators(this.getValidators());
   }
 
-  protected getBaseValidators():Array<any> {
+  protected getValidators():Array<any> {
     let validators: Array<any> = [];
     if (this._required === true) {
       validators.push(Validators.required);

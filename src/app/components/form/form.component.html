@@ -12,6 +12,7 @@
     <div class="row">
         <label>Date Two:</label>
         <date-control #date2
+            [initialValue]="'20030101'"
             [allowFutureDate]="false">
         </date-control>
     </div>
@@ -19,6 +20,7 @@
     <div class="row">
         <label>Date Three:</label>
         <date-control #date3
+            [initialValue]="'20080101'"
             [allowFutureDate]="false">
         </date-control>
     </div>
@@ -26,6 +28,7 @@
     <div class="row" *ngIf="hidden==false">
         <label>Date Four:</label>
         <date-control #dynamic
+            [initialValue]="'20060404'"
             [allowFutureDate]="false">
         </date-control>
     </div>

@@ -26,12 +26,11 @@ export class DateControlComponent extends BaseControlComponent {
   @Input()
   public allowFutureDate: boolean = true;
 
-  protected setValidators() {
-    let validators: Array<any> = this.getBaseValidators();
+  protected getValidators():Array<any> {
+    let validators: Array<any> = super.getValidators();
     if (this.allowFutureDate === false) {
-      validators.push(DateValidators.notInFuture());
+      validators.push( DateValidators.notInFuture() );
     }
-    this._baseCtrl.setValidators(validators);
+    return validators;
   }
 }
-
