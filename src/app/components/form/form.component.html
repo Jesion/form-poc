@@ -1,0 +1,44 @@
+<form [formGroup]="myForm">
+
+    <div class="row">
+        <label>Date One:</label>
+        <date-control #date1 
+            [initialValue]="'20000101'"           
+            [required]="true"
+            [allowFutureDate]="false">
+        </date-control>
+    </div>
+
+    <div class="row">
+        <label>Date Two:</label>
+        <date-control #date2
+            [allowFutureDate]="false">
+        </date-control>
+    </div>
+
+    <div class="row">
+        <label>Date Three:</label>
+        <date-control #date3
+            [allowFutureDate]="false">
+        </date-control>
+    </div>
+
+    <div class="row" *ngIf="hidden==false">
+        <label>Date Four:</label>
+        <date-control #dynamic
+            [allowFutureDate]="false">
+        </date-control>
+    </div>
+
+    <div class="row" *ngIf="hidden==false">
+        <label>Name:</label>
+        <name-control #dynamic></name-control>
+    </div> 
+
+    <button type="submit"
+        [disabled]="myForm.valid==false"
+        (click)="onSubmit(myForm.value)">Submit</button>
+
+    <button (click)="onToggle()">Toggle Hidden Part</button>
+
+</form>
