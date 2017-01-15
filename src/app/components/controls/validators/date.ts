@@ -21,7 +21,7 @@ export class DateValidators {
           return null;
         }
       }
-      return {'inFuture': isInFuture, 'isValid': !isValid};
+      return {'inFuture': isInFuture, 'invalid': !isValid};
     };
   }
 }
