@@ -1,47 +1,64 @@
 <form [formGroup]="myForm">
 
-    <date-control #date1 
-        [initialValue]="'20200101'"           
-        [required]="true"
-        [allowFutureDate]="false"
-        [label]="'Date One'">
-    </date-control> 
+    <!-- Static section, always rendered -->
+    <fieldset>
+        <label>Section A</label>
+        <date-control #date1 
+            [initialValue]="'20200101'"           
+            [required]="true"
+            [allowFutureDate]="false"
+            [label]="'Date One'">
+        </date-control> 
+        <date-control #date2 
+            [initialValue]="'20030101'"           
+            [required]="true"
+            [allowFutureDate]="false"
+            [label]="'Date Two'">
+        </date-control> 
+        <date-control #date3
+            [initialValue]="'19990101'"           
+            [required]="true"
+            [allowFutureDate]="false"
+            [label]="'Date Three'">
+        </date-control> 
+    </fieldset>
 
-    <date-control #date2 
-        [initialValue]="'20030101'"           
-        [required]="true"
-        [allowFutureDate]="false"
-        [label]="'Date Two'">
-    </date-control> 
-
-    <date-control #date3
-        [initialValue]="'19990101'"           
-        [required]="true"
-        [allowFutureDate]="false"
-        [label]="'Date Three'">
-    </date-control> 
-
-    <div *ngIf="hidden==false">
-
-        <date-control #dynamic
-            [initialValue]="'19780503'"           
+    <!-- Dynamic section, programmaticaly controlled -->
+    <fieldset *ngIf="sectionBVisible==true">
+        <label>Section B</label>
+        <date-control #sectionB
+            [initialValue]="'19780503'"
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date Four'">
-        </date-control> 
-
-        <name-control id="name"
+        </date-control>
+        <name-control #sectionB
             [initialValue]="'Jesionek'" 
-            [label]="'Name'"
-            #dynamic>
+            [label]="'Name'">
         </name-control>
+    </fieldset> 
 
-    </div>    
+    <fieldset *ngIf="sectionCVisible==true">
+        <label>Section C</label>
+        <name-control 
+            [initialValue]="'Robert'" 
+            [label]="'Firstname'"
+            #sectionC>
+        </name-control>
+        <name-control 
+            [initialValue]="'Jesionek'" 
+            [label]="'Lastname'"
+            #sectionC>
+        </name-control>
+    </fieldset> 
 
-    <button type="submit"
-        [disabled]="myForm.valid==false"
-        (click)="onSubmit(myForm.value)">Submit</button>
-
-    <button (click)="onToggle()">Toggle Hidden Part</button>
+    <fieldset>
+        <button type="submit"
+            [disabled]="myForm.valid==false"
+            (click)="onSubmit(myForm.value)">Submit</button>
+    </fieldset>       
 
 </form>
+
+<button (click)="onToggleSectionB()">Toggle Section B</button>
+<button (click)="onToggleSectionC()">Toggle Section C</button>

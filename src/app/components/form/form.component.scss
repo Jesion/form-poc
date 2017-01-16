@@ -2,4 +2,11 @@ form {
   margin: 50px;
   padding: 100px;
   background-color: #eeeeee;
+  fieldset {
+    border: none;
+    label {
+      margin-bottom: 40px;
+      display:inline-block;      
+    }
+  }
 }
