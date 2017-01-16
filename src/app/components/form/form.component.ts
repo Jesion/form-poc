@@ -23,9 +23,14 @@ export class FormComponent implements OnInit, AfterViewInit {
 	public dateThree: DateControlComponent;
 
 	@ViewChildren('sectionB')
-	public dynamicControlsFuture: QueryList<BaseControlComponent>;
+	public sectionB: QueryList<BaseControlComponent>;
+
+	@ViewChildren('sectionC')
+	public sectionC: QueryList<BaseControlComponent>;
 
 	public sectionBVisible: boolean = false;
+
+	public sectionCVisible: boolean = false;
 
 	constructor( private fb: FormBuilder ) {
 
@@ -43,8 +48,8 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
-		if (this.dynamicControlsFuture) {
-			this.dynamicControlsFuture.changes.subscribe((list: QueryList<BaseControlComponent>) => {
+		if (this.sectionB) {
+			this.sectionB.changes.subscribe((list: QueryList<BaseControlComponent>) => {
 				let myComponents: Array<BaseControlComponent> = list.toArray();
 				if (myComponents.length == 0) {
 					this.unhookFromModel('date4');
@@ -61,6 +66,20 @@ export class FormComponent implements OnInit, AfterViewInit {
 					})
 				}
 			});
+		}	
+
+		if (this.sectionC) {
+			this.sectionC.changes.subscribe((list: QueryList<BaseControlComponent>) => {
+				let myComponents: Array<BaseControlComponent> = list.toArray();
+				if (myComponents.length == 0) {
+					this.unhookFromModel('name2');
+					this.unhookFromModel('name3');
+				} else {
+					for (let i = 0; i < myComponents.length; i++) {
+						this.hookToModel(myComponents[i], 'sectionCname'+i)
+					}				
+				}
+			});
 		}		
 	}
 
@@ -70,6 +89,10 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public onToggleSectionB() {
 		this.sectionBVisible = !this.sectionBVisible;
+	}
+
+	public onToggleSectionC() {
+		this.sectionCVisible = !this.sectionCVisible;
 	}
 
 	private hookToModel(control: BaseControlComponent, name: string) {

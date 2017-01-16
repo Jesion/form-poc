@@ -27,22 +27,38 @@
     <fieldset *ngIf="sectionBVisible==true">
         <label>Section B</label>
         <date-control #sectionB
-            [initialValue]="'19780503'"           
+            [initialValue]="'19780503'"
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date Four'">
         </date-control>
-        <name-control id="name"
+        <name-control #sectionB
             [initialValue]="'Jesionek'" 
-            [label]="'Name'"
-            #sectionB>
+            [label]="'Name'">
         </name-control>
-    </fieldset>    
+    </fieldset> 
 
-    <button type="submit"
-        [disabled]="myForm.valid==false"
-        (click)="onSubmit(myForm.value)">Submit</button>
+    <fieldset *ngIf="sectionCVisible==true">
+        <label>Section C</label>
+        <name-control 
+            [initialValue]="'Robert'" 
+            [label]="'Firstname'"
+            #sectionC>
+        </name-control>
+        <name-control 
+            [initialValue]="'Jesionek'" 
+            [label]="'Lastname'"
+            #sectionC>
+        </name-control>
+    </fieldset> 
+
+    <fieldset>
+        <button type="submit"
+            [disabled]="myForm.valid==false"
+            (click)="onSubmit(myForm.value)">Submit</button>
+    </fieldset>       
 
 </form>
 
 <button (click)="onToggleSectionB()">Toggle Section B</button>
+<button (click)="onToggleSectionC()">Toggle Section C</button>
