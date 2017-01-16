@@ -4,6 +4,7 @@ import { DateControlComponent } from '../controls/date.component';
 import { BaseControlComponent } from '../controls/baseControl/basecontrol.component';
 import { NameControlComponent } from '../controls/name.component';
 import { FormSectionComponent } from './section/section.component';
+import { Section } from './section/section';
 
 @Component({
 	selector: 'my-form',
@@ -35,6 +36,8 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
 
+	public sections: Array<Section> = [];
+
 	constructor( private fb: FormBuilder ) {
 		this.myForm = fb.group({ });
 	}
@@ -58,6 +61,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 				let all: Array<BaseControlComponent | FormSectionComponent> = list.toArray();
 				let controls: Array<BaseControlComponent> = [];
 				if (all.length == 0) {
+					//TODO: do the unhooking based on model ids saved upon creation of a Section object...
 					models.forEach((model) => {
 						this.unhookFromModel(model);
 					})
@@ -65,6 +69,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 				all.forEach((component) => {
 					if (component instanceof BaseControlComponent) {
 						controls.push(<BaseControlComponent>component);
+					} else if (component instanceof FormSectionComponent) {
+						//TODO: create a Section object, give it an uid and save model ids against it in order to remove models from arguments of this method...
+						//let section: Section = new Section( uuid.v4(), component.models );
 					}
 				})
 				for (let i = 0; i < controls.length; i++) {
