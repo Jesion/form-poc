@@ -22,10 +22,10 @@ export class FormComponent implements OnInit, AfterViewInit {
 	@ViewChild('date3')
 	public dateThree: DateControlComponent;
 
-	@ViewChildren('dynamic')
+	@ViewChildren('sectionB')
 	public dynamicControlsFuture: QueryList<BaseControlComponent>;
 
-	public hidden: boolean = true;
+	public sectionBVisible: boolean = false;
 
 	constructor( private fb: FormBuilder ) {
 
@@ -68,8 +68,8 @@ export class FormComponent implements OnInit, AfterViewInit {
 		console.log('Submit handler: ' + JSON.stringify(value));
 	}
 
-	public onToggle() {
-		this.hidden = !this.hidden;
+	public onToggleSectionB() {
+		this.sectionBVisible = !this.sectionBVisible;
 	}
 
 	private hookToModel(control: BaseControlComponent, name: string) {
