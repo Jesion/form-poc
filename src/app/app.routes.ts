@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HostComponent } from './components/host/host.component';
+import { FormComponent } from './components/form/form.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'host', pathMatch: 'full' },
-	{ path: 'host', component: HostComponent }
+	{ path: '', redirectTo: 'myform', pathMatch: 'full' },
+	{ path: 'myform', component: FormComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);

@@ -24,7 +24,7 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   public label: string = 'My Control';
 
   @Input()
-  public errorKeys: Array<string> = ['pattern', 'invalid'];
+  public errorKeys: Array<string> = [];
 
   public maxLen: number = -1;
 

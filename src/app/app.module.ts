@@ -3,7 +3,6 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HostComponent } from './components/host/host.component';
 import { FormComponent } from './components/form/form.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +14,6 @@ import { ControlErrorComponent } from './components/controls/error/error.compone
 @NgModule({
     declarations: [ 
         AppComponent,
-        HostComponent,
         FormComponent,
         DateControlComponent,
         NameControlComponent,
