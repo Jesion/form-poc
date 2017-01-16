@@ -21,6 +21,8 @@ export class DateControlComponent extends BaseControlComponent {
     super();
 
     this._restrict = Restrict.NUMERIC;
+
+    this.errorKeys = ['inFuture', 'invalid', 'pattern', 'required'];
   }
 
   @Input()

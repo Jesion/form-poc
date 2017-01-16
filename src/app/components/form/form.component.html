@@ -1,61 +1,42 @@
 <form [formGroup]="myForm">
 
-    <div class="row">      
-        <label>Date One:</label>
-        <date-control #date1 
-            [initialValue]="'20000101'"           
+    <date-control #date1 
+        [initialValue]="'20200101'"           
+        [required]="true"
+        [allowFutureDate]="false"
+        [label]="'Date One'">
+    </date-control> 
+
+    <date-control #date2 
+        [initialValue]="'20030101'"           
+        [required]="true"
+        [allowFutureDate]="false"
+        [label]="'Date Two'">
+    </date-control> 
+
+    <date-control #date3
+        [initialValue]="'19990101'"           
+        [required]="true"
+        [allowFutureDate]="false"
+        [label]="'Date Three'">
+    </date-control> 
+
+    <div *ngIf="hidden==false">
+
+        <date-control #dynamic
+            [initialValue]="'19780503'"           
             [required]="true"
-            [allowFutureDate]="false">
-        </date-control>
-        <control-error [errorKeys]="['inFuture', 'invalid']"
-            [baseCtrl]="date1.baseCtrl">
-        </control-error>
-    </div>
+            [allowFutureDate]="false"
+            [label]="'Date Four'">
+        </date-control> 
 
-    <div class="row">
-        <label for="date2">Date Two:</label>
-        <date-control #date2
-            [initialValue]="'20030101'"
-            [allowFutureDate]="false">
-        </date-control>
-        <control-error [errorKeys]="['inFuture', 'invalid']"
-            [baseCtrl]="date2.baseCtrl">
-        </control-error>    
-    </div>
-
-    <div class="row">
-        <label>Date Three:</label>
-        <date-control #date3
-            [initialValue]="'20080101'"
-            [allowFutureDate]="false">            
-        </date-control>
-        <control-error [errorKeys]="['inFuture', 'invalid']"
-            [baseCtrl]="date3.baseCtrl">
-        </control-error>    
-    </div>
-
-    <div class="row" *ngIf="hidden==false">
-        <label>Date Four:</label>
-        <date-control #dynamic id="date4"
-            [initialValue]="'20060404'"
-            [allowFutureDate]="false">
-        </date-control>
-        <!--
-        <control-error [errorKeys]="['inFuture', 'invalid']"
-            [baseCtrl]="date4.baseCtrl">
-        </control-error>    -->
-    </div>
-
-    <div class="row" *ngIf="hidden==false">
-        <label>Name:</label>
         <name-control id="name"
             [initialValue]="'Jesionek'" 
-            #dynamic></name-control>
-        <!--    
-        <control-error [errorKeys]="['pattern', 'maxLength']"
-            [baseCtrl]="name.baseCtrl">   
-        </control-error>   -->  
-    </div> 
+            [label]="'Name'"
+            #dynamic>
+        </name-control>
+
+    </div>    
 
     <button type="submit"
         [disabled]="myForm.valid==false"

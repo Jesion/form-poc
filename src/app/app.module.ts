@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
 import { DateControlComponent } from './components/controls/date.component';
-import { DateControlWrapperComponent } from './components/controls/date.wrapper.component';
 import { NameControlComponent } from './components/controls/name.component';
 import { ControlErrorComponent } from './components/controls/error/error.component';
 
@@ -19,7 +18,6 @@ import { ControlErrorComponent } from './components/controls/error/error.compone
         HostComponent,
         FormComponent,
         DateControlComponent,
-        DateControlWrapperComponent,
         NameControlComponent,
         ControlErrorComponent
     ],

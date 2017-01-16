@@ -20,6 +20,12 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BaseControlComponent implements ControlValueAccessor, OnInit {
 
+  @Input()
+  public label: string = 'My Control';
+
+  @Input()
+  public errorKeys: Array<string> = ['pattern', 'invalid'];
+
   public maxLen: number = -1;
 
   protected _restrict: string = Restrict.NONE;
@@ -232,4 +238,3 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
     this._baseCtrl.updateValueAndValidity();
   }
 }
-

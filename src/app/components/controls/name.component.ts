@@ -16,4 +16,11 @@ export class NameControlComponent extends BaseControlComponent {
 
   @Input()
   public maxLen: number = 32;
+
+  constructor() {
+
+    super();
+    
+    this.errorKeys = ['pattern', 'maxLen', 'required'];
+  }
 }
