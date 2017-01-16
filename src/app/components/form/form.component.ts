@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DateControlComponent } from '../controls/date.component';
 import { BaseControlComponent } from '../controls/baseControl/basecontrol.component';
 import { NameControlComponent } from '../controls/name.component';
+import { FormSectionComponent } from './section/section.component';
+import { Section } from './section/section';
 
 @Component({
 	selector: 'my-form',
@@ -13,78 +15,78 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public myForm: FormGroup;
 
-	@ViewChild('date1')
-	public dateOne: DateControlComponent;
-
-	@ViewChild('date2')
-	public dateTwo: DateControlComponent;
-
-	@ViewChild('date3')
-	public dateThree: DateControlComponent;
+	@ViewChildren('sectionA')
+	public sectionA: QueryList<BaseControlComponent | FormSectionComponent>;	
 
 	@ViewChildren('sectionB')
-	public sectionB: QueryList<BaseControlComponent>;
+	public sectionB: QueryList<BaseControlComponent | FormSectionComponent>;
 
 	@ViewChildren('sectionC')
-	public sectionC: QueryList<BaseControlComponent>;
+	public sectionC: QueryList<BaseControlComponent | FormSectionComponent>;
+
+	public sectionAVisible: boolean = false;
+
+	public sectionAModels: Array<string> = [ 'date1', 'date2', 'date3' ];
 
 	public sectionBVisible: boolean = false;
 
+	public sectionBModels: Array<string> = [ 'date4', 'name' ];
+
 	public sectionCVisible: boolean = false;
 
-	constructor( private fb: FormBuilder ) {
+	public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
 
+	public sections: Array<Section> = [];
+
+	constructor( private fb: FormBuilder ) {
+		this.myForm = fb.group({ });
 	}
 
 	ngOnInit() {
-		let dateOneControl: FormControl = this.dateOne.baseCtrl;
-		let dateTwoControl: FormControl = this.dateTwo.baseCtrl;
-		let dateThreeControl: FormControl = this.dateThree.baseCtrl;
-		this.myForm = this.fb.group({ 'dateOne': dateOneControl, 'dateTwo': dateTwoControl, 'dateThree': dateThreeControl });
-		this.myForm.valueChanges.subscribe((value: any) => {
-			console.log('form changed: ' + JSON.stringify(value));
-		});
-    }
+		setTimeout(() => {
+			this.sectionAVisible = true;
+		}, 500);
+	}
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
-		if (this.sectionB) {
-			this.sectionB.changes.subscribe((list: QueryList<BaseControlComponent>) => {
-				let myComponents: Array<BaseControlComponent> = list.toArray();
-				if (myComponents.length == 0) {
-					this.unhookFromModel('date4');
-					this.unhookFromModel('name');
-				} else {
-					myComponents.forEach((component) => {
-						let name: string;
-						if (component instanceof DateControlComponent) {
-							name = 'date4';			
-						} else if (component instanceof NameControlComponent) {
-							name = 'name';
-						}
-						this.hookToModel(component, name);
+		this.registerSection( this.sectionA, this.sectionAModels );		
+		this.registerSection( this.sectionB, this.sectionBModels );
+		this.registerSection( this.sectionC, this.sectionCModels );
+	}
+
+	private registerSection(section: QueryList<BaseControlComponent | FormSectionComponent>, models: Array<string>) {
+		if (section) {
+			section.changes.subscribe((list: QueryList<BaseControlComponent | FormSectionComponent>) => {
+				let all: Array<BaseControlComponent | FormSectionComponent> = list.toArray();
+				let controls: Array<BaseControlComponent> = [];
+				if (all.length == 0) {
+					//TODO: do the unhooking based on model ids saved upon creation of a Section object...
+					models.forEach((model) => {
+						this.unhookFromModel(model);
 					})
 				}
-			});
-		}	
-
-		if (this.sectionC) {
-			this.sectionC.changes.subscribe((list: QueryList<BaseControlComponent>) => {
-				let myComponents: Array<BaseControlComponent> = list.toArray();
-				if (myComponents.length == 0) {
-					this.unhookFromModel('name2');
-					this.unhookFromModel('name3');
-				} else {
-					for (let i = 0; i < myComponents.length; i++) {
-						this.hookToModel(myComponents[i], 'sectionCname'+i)
-					}				
+				all.forEach((component) => {
+					if (component instanceof BaseControlComponent) {
+						controls.push(<BaseControlComponent>component);
+					} else if (component instanceof FormSectionComponent) {
+						//TODO: create a Section object, give it an uid and save model ids against it in order to remove models from arguments of this method...
+						//let section: Section = new Section( uuid.v4(), component.models );
+					}
+				})
+				for (let i = 0; i < controls.length; i++) {
+					this.hookToModel(controls[i], models[i]);
 				}
 			});
-		}		
+		}
 	}
 
 	public onSubmit(value: any) {
 		console.log('Submit handler: ' + JSON.stringify(value));
+	}
+
+	public onToggleSectionA() {
+		this.sectionAVisible = !this.sectionAVisible;
 	}
 
 	public onToggleSectionB() {
@@ -96,14 +98,26 @@ export class FormComponent implements OnInit, AfterViewInit {
 	}
 
 	private hookToModel(control: BaseControlComponent, name: string) {
+		console.log('hooking ' + name);
 		setTimeout(() => {
+			if (Object.keys(this.myForm.controls).length == 0) {
+				this.createForm();
+			}
 			this.myForm.addControl(name, control.baseCtrl);
 		}, 0);
 	}
 
 	private unhookFromModel(name: string) {
+		console.log('unhooking ' + name);
 		setTimeout(() => {
 			this.myForm.removeControl(name);
 		}, 0);		
+	}
+
+	private createForm() {
+		this.myForm = this.fb.group({  });
+		this.myForm.valueChanges.subscribe((value: any) => {
+			console.log('form changed: ' + JSON.stringify(value));
+		});
 	}
 }

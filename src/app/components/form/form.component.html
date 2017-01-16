@@ -1,31 +1,33 @@
 <form [formGroup]="myForm">
 
-    <!-- Static section, always rendered -->
-    <fieldset>
-        <label>Section A</label>
-        <date-control #date1 
-            [initialValue]="'20200101'"           
+    <form-section [label]="'Section A'" 
+        [models]="sectionAModels" 
+        #sectionA 
+        *ngIf="sectionAVisible==true">
+        <date-control #sectionA 
+            [initialValue]="'20200101'"
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date One'">
         </date-control> 
-        <date-control #date2 
+        <date-control #sectionA 
             [initialValue]="'20030101'"           
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date Two'">
         </date-control> 
-        <date-control #date3
+        <date-control #sectionA
             [initialValue]="'19990101'"           
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date Three'">
         </date-control> 
-    </fieldset>
+    </form-section>    
 
-    <!-- Dynamic section, programmaticaly controlled -->
-    <fieldset *ngIf="sectionBVisible==true">
-        <label>Section B</label>
+    <form-section [label]="'Section B'" 
+        [models]="sectionBModels" 
+        #sectionB 
+        *ngIf="sectionBVisible==true">
         <date-control #sectionB
             [initialValue]="'19780503'"
             [required]="true"
@@ -36,10 +38,12 @@
             [initialValue]="'Jesionek'" 
             [label]="'Name'">
         </name-control>
-    </fieldset> 
+    </form-section> 
 
-    <fieldset *ngIf="sectionCVisible==true">
-        <label>Section C</label>
+    <form-section [label]="'Section C'" 
+        #sectionC 
+        [models]="sectionCModels" 
+        *ngIf="sectionCVisible==true">
         <name-control 
             [initialValue]="'Robert'" 
             [label]="'Firstname'"
@@ -50,7 +54,7 @@
             [label]="'Lastname'"
             #sectionC>
         </name-control>
-    </fieldset> 
+    </form-section> 
 
     <fieldset>
         <button type="submit"
@@ -60,5 +64,6 @@
 
 </form>
 
+<button (click)="onToggleSectionA()">Toggle Section A</button>
 <button (click)="onToggleSectionB()">Toggle Section B</button>
 <button (click)="onToggleSectionC()">Toggle Section C</button>

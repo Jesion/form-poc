@@ -4,7 +4,8 @@ import {Character} from '../../statics/character';
 
 @Component({
   selector: 'name-control',
-  templateUrl: 'app/components/controls/baseControl/basecontrol.component.html'
+  templateUrl: 'app/components/controls/baseControl/basecontrol.component.html',
+  styleUrls: ['app/components/controls/baseControl/basecontrol.component.css']
 })
 export class NameControlComponent extends BaseControlComponent {
 
