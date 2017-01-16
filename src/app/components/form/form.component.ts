@@ -14,20 +14,18 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public myForm: FormGroup;
 
-	@ViewChild('date1')
-	public dateOne: DateControlComponent;
-
-	@ViewChild('date2')
-	public dateTwo: DateControlComponent;
-
-	@ViewChild('date3')
-	public dateThree: DateControlComponent;
+	@ViewChildren('sectionA')
+	public sectionA: QueryList<BaseControlComponent | FormSectionComponent>;	
 
 	@ViewChildren('sectionB')
 	public sectionB: QueryList<BaseControlComponent | FormSectionComponent>;
 
 	@ViewChildren('sectionC')
 	public sectionC: QueryList<BaseControlComponent | FormSectionComponent>;
+
+	public sectionAVisible: boolean = false;
+
+	public sectionAModels: Array<string> = [ 'date1', 'date2', 'date3' ];
 
 	public sectionBVisible: boolean = false;
 
@@ -38,24 +36,17 @@ export class FormComponent implements OnInit, AfterViewInit {
 	public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
 
 	constructor( private fb: FormBuilder ) {
-
+		this.myForm = fb.group({ });
 	}
 
 	ngOnInit() {
-		let dateOneControl: FormControl = this.dateOne.baseCtrl;
-		let dateTwoControl: FormControl = this.dateTwo.baseCtrl;
-		let dateThreeControl: FormControl = this.dateThree.baseCtrl;
-		this.myForm = this.fb.group({ 'dateOne': dateOneControl, 'dateTwo': dateTwoControl, 'dateThree': dateThreeControl });
-		this.myForm.valueChanges.subscribe((value: any) => {
-			console.log('form changed: ' + JSON.stringify(value));
-		});
+		this.sectionAVisible = false;
     }
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
-		
+		this.registerSection( this.sectionA, this.sectionAModels );		
 		this.registerSection( this.sectionB, this.sectionBModels );
-
 		this.registerSection( this.sectionC, this.sectionCModels );
 	}
 
@@ -85,6 +76,10 @@ export class FormComponent implements OnInit, AfterViewInit {
 		console.log('Submit handler: ' + JSON.stringify(value));
 	}
 
+	public onToggleSectionA() {
+		this.sectionAVisible = !this.sectionAVisible;
+	}
+
 	public onToggleSectionB() {
 		this.sectionBVisible = !this.sectionBVisible;
 	}
@@ -96,6 +91,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 	private hookToModel(control: BaseControlComponent, name: string) {
 		console.log('hooking ' + name);
 		setTimeout(() => {
+			if (Object.keys(this.myForm.controls).length == 0) {
+				this.createForm();
+			}
 			this.myForm.addControl(name, control.baseCtrl);
 		}, 0);
 	}
@@ -105,5 +103,12 @@ export class FormComponent implements OnInit, AfterViewInit {
 		setTimeout(() => {
 			this.myForm.removeControl(name);
 		}, 0);		
+	}
+
+	private createForm() {
+		this.myForm = this.fb.group({  });
+		this.myForm.valueChanges.subscribe((value: any) => {
+			console.log('form changed: ' + JSON.stringify(value));
+		});
 	}
 }
