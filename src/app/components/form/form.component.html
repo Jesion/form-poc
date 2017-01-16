@@ -1,10 +1,11 @@
 <form [formGroup]="myForm">
 
     <!-- Static section, always rendered -->
+
     <fieldset>
         <label>Section A</label>
         <date-control #date1 
-            [initialValue]="'20200101'"           
+            [initialValue]="'20200101'"
             [required]="true"
             [allowFutureDate]="false"
             [label]="'Date One'">
@@ -24,7 +25,8 @@
     </fieldset>
 
     <!-- Dynamic section, programmaticaly controlled -->
-    <fieldset *ngIf="sectionBVisible==true">
+
+    <form-section [models]="sectionBModels" #sectionB *ngIf="sectionBVisible==true">
         <label>Section B</label>
         <date-control #sectionB
             [initialValue]="'19780503'"
@@ -36,9 +38,10 @@
             [initialValue]="'Jesionek'" 
             [label]="'Name'">
         </name-control>
-    </fieldset> 
+    </form-section> 
 
-    <fieldset *ngIf="sectionCVisible==true">
+    <form-section #sectionC 
+        [models]="sectionCModels" *ngIf="sectionCVisible==true">
         <label>Section C</label>
         <name-control 
             [initialValue]="'Robert'" 
@@ -50,7 +53,7 @@
             [label]="'Lastname'"
             #sectionC>
         </name-control>
-    </fieldset> 
+    </form-section> 
 
     <fieldset>
         <button type="submit"

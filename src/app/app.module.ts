@@ -4,6 +4,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
+import { FormSectionComponent } from './components/form/section/section.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
@@ -15,6 +16,7 @@ import { ControlErrorComponent } from './components/controls/error/error.compone
     declarations: [ 
         AppComponent,
         FormComponent,
+        FormSectionComponent,
         DateControlComponent,
         NameControlComponent,
         ControlErrorComponent
