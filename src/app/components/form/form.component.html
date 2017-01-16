@@ -1,7 +1,9 @@
 <form [formGroup]="myForm">
 
-    <form-section [models]="sectionAModels" #sectionA *ngIf="sectionAVisible==true">
-        <label>Section A</label>
+    <form-section [label]="'Section A'" 
+        [models]="sectionAModels" 
+        #sectionA 
+        *ngIf="sectionAVisible==true">
         <date-control #sectionA 
             [initialValue]="'20200101'"
             [required]="true"
@@ -22,8 +24,10 @@
         </date-control> 
     </form-section>    
 
-    <form-section [models]="sectionBModels" #sectionB *ngIf="sectionBVisible==true">
-        <label>Section B</label>
+    <form-section [label]="'Section B'" 
+        [models]="sectionBModels" 
+        #sectionB 
+        *ngIf="sectionBVisible==true">
         <date-control #sectionB
             [initialValue]="'19780503'"
             [required]="true"
@@ -36,9 +40,10 @@
         </name-control>
     </form-section> 
 
-    <form-section #sectionC 
-        [models]="sectionCModels" *ngIf="sectionCVisible==true">
-        <label>Section C</label>
+    <form-section [label]="'Section C'" 
+        #sectionC 
+        [models]="sectionCModels" 
+        *ngIf="sectionCVisible==true">
         <name-control 
             [initialValue]="'Robert'" 
             [label]="'Firstname'"
