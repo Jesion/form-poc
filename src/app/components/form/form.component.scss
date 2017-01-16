@@ -1,11 +1,5 @@
 form {
-  margin-bottom: 20px;
+  margin: 50px;
   padding: 100px;
   background-color: #eeeeee;
-  &:hover {
-    background-color: #d8f0ff;
-    /deep/ date-control input {
-      background-color: #d8f0ff !important;
-    }
-  }  
 }
