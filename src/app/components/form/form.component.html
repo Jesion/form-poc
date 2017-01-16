@@ -57,13 +57,13 @@
     </form-section> 
 
     <fieldset>
-        <button type="submit"
+        <button class="btn" type="submit"
             [disabled]="myForm.valid==false"
             (click)="onSubmit(myForm.value)">Submit</button>
     </fieldset>       
 
 </form>
 
-<button (click)="onToggleSectionA()">Toggle Section A</button>
-<button (click)="onToggleSectionB()">Toggle Section B</button>
-<button (click)="onToggleSectionC()">Toggle Section C</button>
+<a class="btn" (click)="onToggleSectionA()">Toggle Section A</a>
+<a class="btn" (click)="onToggleSectionB()">Toggle Section B</a>
+<a class="btn" (click)="onToggleSectionC()">Toggle Section C</a>

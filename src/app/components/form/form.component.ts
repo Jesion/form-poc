@@ -45,7 +45,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 	ngOnInit() {
 		setTimeout(() => {
 			this.sectionAVisible = true;
-		}, 500);
+		}, 0);
 	}
 
 	ngAfterViewInit() {
@@ -70,8 +70,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 					if (component instanceof BaseControlComponent) {
 						controls.push(<BaseControlComponent>component);
 					} else if (component instanceof FormSectionComponent) {
-						//TODO: create a Section object, give it an uid and save model ids against it in order to remove models from arguments of this method...
+						//TODO: create a Section object here, give it an uid and save model ids against it. This will make models param redundant 
 						//let section: Section = new Section( uuid.v4(), component.models );
+						//this.sections.push(section);
 					}
 				})
 				for (let i = 0; i < controls.length; i++) {

@@ -24,12 +24,14 @@ describe('date component', () => {
     fixture = TestBed.createComponent(DateControlComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('input'));
-    el = de.nativeElement;
+    el = de.nativeElement;   
   });
 
   it('should render formatted date', () => {
-    comp.value = '20120101';
-    fixture.detectChanges();
-    expect(el.value).toEqual('2012-01-01');
+    TestBed.compileComponents().then(() => {
+      comp.value = '20120101';
+      fixture.detectChanges();
+      expect(el.value).toEqual('2012-01-01');
+    });
   });
 });
