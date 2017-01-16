@@ -32,8 +32,8 @@ export class HostComponent implements OnInit {
 	}
 
 	public ngOnInit() {
-		ReactChildComponentView.initialize( this.model.componentTitle, this.store, 'react-component-container', this.injector );
-		ReactChildComponentView.initialize( this.model.componentTitle, this.store, 'react-component-container-2', this.injector );
+		//ReactChildComponentView.initialize( this.model.componentTitle, this.store, 'react-component-container', this.injector );
+		//ReactChildComponentView.initialize( this.model.componentTitle, this.store, 'react-component-container-2', this.injector );
 	}
 
 	public onAdd() {
