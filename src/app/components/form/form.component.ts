@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DateControlComponent } from '../controls/date.component';
 import { BaseControlComponent } from '../controls/baseControl/basecontrol.component';
@@ -40,8 +40,10 @@ export class FormComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit() {
-		this.sectionAVisible = false;
-    }
+		setTimeout(() => {
+			this.sectionAVisible = true;
+		}, 500);
+	}
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
