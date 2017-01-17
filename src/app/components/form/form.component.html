@@ -1,5 +1,11 @@
 <form [formGroup]="myForm">
 
+    <section-one *ngIf="sectionOneVisible==true"
+        [label]="'Section One'" 
+        #sectionOne 
+        [id]="sectionOne">
+    </section-one>    
+
     <form-section [label]="'Section A'" 
         [id]="sectionA"
         #sectionA 
