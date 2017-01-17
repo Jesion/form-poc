@@ -4,7 +4,9 @@ import { DateControlComponent } from '../controls/date.component';
 import { BaseControlComponent } from '../controls/baseControl/basecontrol.component';
 import { NameControlComponent } from '../controls/name.component';
 import { FormSectionComponent } from './section/section.component';
+import { FormModel } from './form.model';
 import { Section } from './section/section';
+import * as uuid from 'node-uuid';
 
 @Component({
 	selector: 'my-form',
@@ -26,19 +28,19 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public sectionAVisible: boolean = false;
 
-	public sectionAModels: Array<string> = [ 'date1', 'date2', 'date3' ];
+	//public sectionAModels: Array<string> = [ 'date1', 'date2', 'date3' ];
 
 	public sectionBVisible: boolean = false;
 
-	public sectionBModels: Array<string> = [ 'date4', 'name' ];
+	//public sectionBModels: Array<string> = [ 'date4', 'name' ];
 
 	public sectionCVisible: boolean = false;
 
-	public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
+	//public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
 
 	public sections: Array<Section> = [];
 
-	constructor( private fb: FormBuilder ) {
+	constructor( private fb: FormBuilder, private model: FormModel ) {
 		this.myForm = fb.group({ });
 	}
 
@@ -50,33 +52,39 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
-		this.registerSection( this.sectionA, this.sectionAModels );		
-		this.registerSection( this.sectionB, this.sectionBModels );
-		this.registerSection( this.sectionC, this.sectionCModels );
+		this.registerSection( this.sectionA, 'sectionA' );		
+		this.registerSection( this.sectionB, 'sectionB' );
+		this.registerSection( this.sectionC, 'sectionC' );
 	}
 
-	private registerSection(section: QueryList<BaseControlComponent | FormSectionComponent>, models: Array<string>) {
+	/**
+	 * Manages section controls presence reactive forms model
+	 * Generic for all form sections
+	 */
+	private registerSection(section: QueryList<BaseControlComponent | FormSectionComponent>, id: string) {
 		if (section) {
 			section.changes.subscribe((list: QueryList<BaseControlComponent | FormSectionComponent>) => {
 				let all: Array<BaseControlComponent | FormSectionComponent> = list.toArray();
 				let controls: Array<BaseControlComponent> = [];
+				let s: Section;
 				if (all.length == 0) {
-					//TODO: do the unhooking based on model ids saved upon creation of a Section object...
-					models.forEach((model) => {
-						this.unhookFromModel(model);
-					})
+					if (this.model.hasSection(id) == true) {
+						s = this.model.getSection(id);
+						s.models.forEach((model) => {
+							this.unhookFromModel(model);
+						});
+					}
 				}
 				all.forEach((component) => {
 					if (component instanceof BaseControlComponent) {
 						controls.push(<BaseControlComponent>component);
 					} else if (component instanceof FormSectionComponent) {
-						//TODO: create a Section object here, give it an uid and save model ids against it. This will make models param redundant 
-						//let section: Section = new Section( uuid.v4(), component.models );
-						//this.sections.push(section);
+						s = new Section(component.id, component.models);
+						this.model.addSection(s);
 					}
 				})
 				for (let i = 0; i < controls.length; i++) {
-					this.hookToModel(controls[i], models[i]);
+					this.hookToModel(controls[i], s.models[i]);
 				}
 			});
 		}

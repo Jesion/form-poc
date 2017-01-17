@@ -1,6 +1,6 @@
 export class Section {
     
-    constructor(public uid: string, public models: Array<string>) {
+    constructor(public id: string, public models: Array<string>) {
 
     }
 }

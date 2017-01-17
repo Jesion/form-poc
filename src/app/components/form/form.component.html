@@ -1,7 +1,8 @@
 <form [formGroup]="myForm">
 
     <form-section [label]="'Section A'" 
-        [models]="sectionAModels" 
+        [id]="sectionA"
+        [models]="[ 'date1', 'date2', 'date3' ]" 
         #sectionA 
         *ngIf="sectionAVisible==true">
         <date-control #sectionA 
@@ -25,7 +26,8 @@
     </form-section>    
 
     <form-section [label]="'Section B'" 
-        [models]="sectionBModels" 
+        [id]="sectionB"
+        [models]="[ 'date4', 'name' ]" 
         #sectionB 
         *ngIf="sectionBVisible==true">
         <date-control #sectionB
@@ -41,8 +43,9 @@
     </form-section> 
 
     <form-section [label]="'Section C'" 
+        [id]="sectionC"
         #sectionC 
-        [models]="sectionCModels" 
+        [models]="[ 'firstName', 'lastName' ]" 
         *ngIf="sectionCVisible==true">
         <name-control 
             [initialValue]="'Robert'" 

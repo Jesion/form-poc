@@ -8,6 +8,9 @@ import {Component, Input} from '@angular/core';
 export class FormSectionComponent {
 
   @Input()
+  public id: string;
+
+  @Input()
   public models: Array<string> = [];
 
   @Input()

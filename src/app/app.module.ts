@@ -11,6 +11,7 @@ import { routing } from './app.routes';
 import { DateControlComponent } from './components/controls/date.component';
 import { NameControlComponent } from './components/controls/name.component';
 import { ControlErrorComponent } from './components/controls/error/error.component';
+import { FormModel } from './components/form/form.model';
 
 @NgModule({
     declarations: [ 
@@ -29,7 +30,7 @@ import { ControlErrorComponent } from './components/controls/error/error.compone
         ReactiveFormsModule         
     ],   
     providers: [
-        
+        FormModel
     ],
     bootstrap: [ AppComponent ]
 })
