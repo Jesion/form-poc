@@ -22,8 +22,6 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   constructor( private fb: FormBuilder ) {
     super();
-
-    //this.form = fb.group({});
   }
 
   ngOnDestroy() {
@@ -31,7 +29,9 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
     this._keys.forEach((key) => {
       this.unhookFromModel(this.form, key);
     });
-    //this.root.removeControl(this.id);
+    setTimeout(() => {
+      this.root.removeControl(this.id);
+    }, 0)
   }
 
   ngAfterViewInit() {
@@ -43,8 +43,7 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
       this.hookToModel(this.form, control);
     });	
     setTimeout(() => {
-      //this.root.addControl(this.id, this.form);
-      //this.root.controls['xx'] = this.form;
+      this.root.addControl(this.id, this.form);
     }, 0);
   } 
 
@@ -56,12 +55,10 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 	}
 
   private hookToModel(form: FormGroup, control: BaseControlComponent) {
-		console.log('hooking ' + control.modelKey);
 		form.addControl(control.modelKey, control.baseCtrl);
 	}
 
   private unhookFromModel(form: FormGroup, modelKey: string) {
-		console.log('unhooking ' + modelKey);
 		form.removeControl(modelKey);
 	}
 }
