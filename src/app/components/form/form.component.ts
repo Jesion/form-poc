@@ -6,7 +6,6 @@ import { NameControlComponent } from '../controls/name.component';
 import { FormSectionComponent } from './section/section.component';
 import { FormModel } from './form.model';
 import { Section } from './section/section';
-import * as uuid from 'node-uuid';
 
 @Component({
 	selector: 'my-form',
@@ -26,11 +25,13 @@ export class FormComponent implements OnInit, AfterViewInit {
 	@ViewChildren('sectionC')
 	public sectionC: QueryList<BaseControlComponent | FormSectionComponent>;
 
+	@ViewChildren('sectionOne')
+	public sectionOne: QueryList<BaseControlComponent | FormSectionComponent>;
+
 	public sectionAVisible: boolean = false;
-
 	public sectionBVisible: boolean = false;
-
 	public sectionCVisible: boolean = false;
+	public sectionOneVisible: boolean = false;
 
 	constructor( private fb: FormBuilder, private model: FormModel ) {
 		this.myForm = fb.group({ });
@@ -39,6 +40,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 	ngOnInit() {
 		setTimeout(() => {
 			this.sectionAVisible = true;
+			this.sectionOneVisible = true;
 		}, 0);
 	}
 
@@ -47,6 +49,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 		this.registerSection( this.sectionA, 'sectionA' );		
 		this.registerSection( this.sectionB, 'sectionB' );
 		this.registerSection( this.sectionC, 'sectionC' );
+		this.registerSection( this.sectionOne, 'sectionOne' );
 	}
 
 	/**
