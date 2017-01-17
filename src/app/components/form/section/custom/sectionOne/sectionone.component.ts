@@ -44,6 +44,7 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
     });	
     setTimeout(() => {
       //this.root.addControl(this.id, this.form);
+      //this.root.controls['xx'] = this.form;
     }, 0);
   } 
 
