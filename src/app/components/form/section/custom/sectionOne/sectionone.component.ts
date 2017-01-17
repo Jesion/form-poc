@@ -37,7 +37,7 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
   ngAfterViewInit() {
     this.elements.forEach((control) => {
       this._keys.push(control.modelKey);
-      if (Object.keys(this.form.controls).length == 0) {
+      if (!this.form) {
 				this.createForm();
 			}
       this.hookToModel(this.form, control);
