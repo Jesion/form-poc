@@ -50,7 +50,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 	}
 
 	/**
-	 * Manages section controls presence reactive forms model
+	 * Manages section controls presence in reactive forms model
 	 * Generic for all form sections
 	 */
 	private registerSection(section: QueryList<BaseControlComponent | FormSectionComponent>, id: string) {
