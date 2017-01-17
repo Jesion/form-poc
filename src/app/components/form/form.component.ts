@@ -28,17 +28,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	public sectionAVisible: boolean = false;
 
-	//public sectionAModels: Array<string> = [ 'date1', 'date2', 'date3' ];
-
 	public sectionBVisible: boolean = false;
 
-	//public sectionBModels: Array<string> = [ 'date4', 'name' ];
-
 	public sectionCVisible: boolean = false;
-
-	//public sectionCModels: Array<string> = [ 'firstName', 'lastName' ];
-
-	public sections: Array<Section> = [];
 
 	constructor( private fb: FormBuilder, private model: FormModel ) {
 		this.myForm = fb.group({ });
