@@ -25,9 +25,6 @@ export class FormComponent implements OnInit, AfterViewInit {
 	@ViewChildren('sectionC')
 	public sectionC: QueryList<BaseControlComponent | FormSectionComponent>;
 
-	@ViewChildren('sectionOne')
-	public sectionOne: QueryList<BaseControlComponent | FormSectionComponent>;
-
 	public sectionAVisible: boolean = false;
 	public sectionBVisible: boolean = false;
 	public sectionCVisible: boolean = false;
@@ -49,7 +46,6 @@ export class FormComponent implements OnInit, AfterViewInit {
 		this.registerSection( this.sectionA, 'sectionA' );		
 		this.registerSection( this.sectionB, 'sectionB' );
 		this.registerSection( this.sectionC, 'sectionC' );
-		this.registerSection( this.sectionOne, 'sectionOne' );
 	}
 
 	/**
