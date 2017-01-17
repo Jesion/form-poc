@@ -60,23 +60,27 @@ export class FormComponent implements OnInit, AfterViewInit {
 				let controls: Array<BaseControlComponent> = [];
 				let s: Section;
 				if (all.length == 0) {
+					//unregistering controls
 					if (this.model.hasSection(id) == true) {
 						s = this.model.getSection(id);
-						s.models.forEach((model) => {
-							this.unhookFromModel(model);
+						s.controls.forEach((control) => {
+							this.unhookFromModel(control.modelKey);
 						});
 					}
-				}
-				all.forEach((component) => {
-					if (component instanceof BaseControlComponent) {
-						controls.push(<BaseControlComponent>component);
-					} else if (component instanceof FormSectionComponent) {
-						s = new Section(component.id, component.models);
-						this.model.addSection(s);
+				} else {			
+					//registering controls
+					all.forEach((component) => {
+						if (component instanceof BaseControlComponent) {
+							controls.push(<BaseControlComponent>component);
+						} else if (component instanceof FormSectionComponent) {
+							s = new Section(component.id);
+							this.model.addSection(s);
+						}
+					})
+					s.controls = controls;
+					for (let i = 0; i < s.controls.length; i++) {
+						this.hookToModel(s.controls[i]);
 					}
-				})
-				for (let i = 0; i < controls.length; i++) {
-					this.hookToModel(controls[i], s.models[i]);
 				}
 			});
 		}
@@ -98,20 +102,20 @@ export class FormComponent implements OnInit, AfterViewInit {
 		this.sectionCVisible = !this.sectionCVisible;
 	}
 
-	private hookToModel(control: BaseControlComponent, name: string) {
-		console.log('hooking ' + name);
+	private hookToModel(control: BaseControlComponent) {
+		console.log('hooking ' + control.modelKey);
 		setTimeout(() => {
 			if (Object.keys(this.myForm.controls).length == 0) {
 				this.createForm();
 			}
-			this.myForm.addControl(name, control.baseCtrl);
+			this.myForm.addControl(control.modelKey, control.baseCtrl);
 		}, 0);
 	}
 
-	private unhookFromModel(name: string) {
-		console.log('unhooking ' + name);
+	private unhookFromModel(modelKey: string) {
+		console.log('unhooking ' + modelKey);
 		setTimeout(() => {
-			this.myForm.removeControl(name);
+			this.myForm.removeControl(modelKey);
 		}, 0);		
 	}
 

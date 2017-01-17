@@ -24,6 +24,9 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   public label: string = 'My Control';
 
   @Input()
+  public modelKey: string;
+
+  @Input()
   public errorKeys: Array<string> = [];
 
   public maxLen: number = -1;

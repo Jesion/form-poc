@@ -11,9 +11,5 @@ export class FormSectionComponent {
   public id: string;
 
   @Input()
-  public models: Array<string> = [];
-
-  @Input()
-  public label: string = 'My Section';
- 
+  public label: string = 'My Section'; 
 }
