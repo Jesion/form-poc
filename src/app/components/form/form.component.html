@@ -67,7 +67,13 @@
         [root]="myForm"
         [label]="'Section One'"        
         [id]="'sectionOne'">
-    </section-one>    
+    </section-one>
+
+    <section-two *ngIf="sectionTwoVisible==true"
+        [root]="myForm"
+        [label]="'Section Two'"
+        [id]="'sectionTwo'">
+    </section-two>
 
     <fieldset>
         <button class="btn" type="submit"

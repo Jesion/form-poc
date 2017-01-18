@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { FormSectionComponent } from './components/form/section/section.component';
 import { SectionOneComponent } from './components/form/section/custom/sectionOne/sectionone.component';
+import { SectionTwoComponent } from './components/form/section/custom/sectionTwo/sectiontwo.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
@@ -24,7 +25,8 @@ import { FormModel } from './components/form/form.model';
         NameControlComponent,
         TextControlComponent,
         ControlErrorComponent,
-        SectionOneComponent
+        SectionOneComponent,
+        SectionTwoComponent
     ],
     imports: [ 
         routing,

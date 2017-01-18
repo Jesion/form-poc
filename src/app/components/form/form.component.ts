@@ -29,6 +29,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 	public sectionBVisible: boolean = false;
 	public sectionCVisible: boolean = false;
 	public sectionOneVisible: boolean = false;
+	public sectionTwoVisible: boolean = false;
 
 	constructor( private fb: FormBuilder, private model: FormModel ) {
 		this.myForm = fb.group({ });
@@ -38,6 +39,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 		setTimeout(() => {
 			this.sectionAVisible = true;
 			this.sectionOneVisible = true;
+			this.sectionTwoVisible = true;
 		}, 0);
 	}
 

@@ -4,8 +4,8 @@ import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
 
 @Component({
-  selector: 'section-one',
-  templateUrl: 'app/components/form/section/custom/sectionOne/sectionone.component.html',
+  selector: 'section-two',
+  templateUrl: 'app/components/form/section/custom/sectionTwo/sectiontwo.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
 export class SectionTwoComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
@@ -34,10 +34,10 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
   }
 
   ngOnDestroy() {
-    this.unhookAll(this.root);
+    //this.unhookAll(this.root);
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root );
+    //this.hookAll(this.elements, this.fb, this.root);
   }
 }
