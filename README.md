@@ -1,5 +1,7 @@
 # Dynamic Form POC.
 
+[Demo](http://demo.robertjesionek.com/myform)
+
 # building and running it
 
 1. Run `npm install -g gulp` to install Gulp.
