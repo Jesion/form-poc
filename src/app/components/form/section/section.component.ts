@@ -30,12 +30,11 @@ export class FormSectionComponent {
   protected createForm(fb: FormBuilder) {
     this.form = fb.group({  });
     this.form.valueChanges.subscribe((value: any) => {
-      console.log('sub form changed: ' + JSON.stringify(value));
+      
     });
   }
 
   protected unhookAll(root: FormGroup) {
-    console.log('destroy...');
     this.keys.forEach((key) => {
       this.unhookFromModel(this.form, key);
     });
