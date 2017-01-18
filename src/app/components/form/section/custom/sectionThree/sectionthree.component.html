@@ -4,6 +4,7 @@
         <div class="col s4">
             <date-control #sectionThree
                 [modelKey]="'sectionThreeDateOne'"
+                [sectionId]="id"
                 [required]="dateRequired"
                 [allowFutureDate]="true"
                 [label]="'This date allows future date entry'">
@@ -12,6 +13,7 @@
         <div class="col s4">
             <date-control #sectionThree
                 [modelKey]="'sectionThreeDateTwo'"
+                [sectionId]="id"
                 [required]="dateRequired"
                 [allowFutureDate]="false"
                 [label]="'Date - not in future'">
@@ -20,6 +22,7 @@
         <div class="col s4">
             <date-control #sectionThree
                 [modelKey]="'sectionThreeDateThree'"
+                [sectionId]="id"
                 [required]="dateRequired"
                 [allowFutureDate]="false"
                 [label]="'Date - not in future'">

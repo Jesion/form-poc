@@ -3,26 +3,30 @@
     <div class="row">
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextOne'"         
+                [modelKey]="'sectionFourTextOne'"  
+                [sectionId]="id"       
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextTwo'"              
+                [modelKey]="'sectionFourTextTwo'"   
+                [sectionId]="id"           
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
                 [modelKey]="'sectionFourTextThree'"
+                [sectionId]="id"
                 [required]="true"
                 [label]="'Text input'">
             </text-input-control>
         </div>  
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextFour'"         
+                [modelKey]="'sectionFourTextFour'"  
+                [sectionId]="id"       
                 [label]="'Text input'">
             </text-input-control>
         </div>      
@@ -30,25 +34,29 @@
     <div class="row">
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextFive'"         
+                [modelKey]="'sectionFourTextFive'"     
+                [sectionId]="id"    
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextSix'"              
+                [modelKey]="'sectionFourTextSix'"  
+                [sectionId]="id"            
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextSeven'"               
+                [modelKey]="'sectionFourTextSeven'"       
+                [sectionId]="id"        
                 [label]="'Text input'">
             </text-input-control>
         </div>  
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextEight'"         
+                [modelKey]="'sectionFourTextEight'"   
+                [sectionId]="id"      
                 [label]="'Text input'">
             </text-input-control>
         </div>      
@@ -56,27 +64,31 @@
     <div class="row">
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextNine'"         
+                [modelKey]="'sectionFourTextNine'"      
+                [sectionId]="id"   
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
-                [modelKey]="'sectionFourTextTen'"              
+                [modelKey]="'sectionFourTextTen'"  
+                [sectionId]="id"            
                 [label]="'Text input'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
                 (maskedValueChanged)="onMaskedValueChanged($event)"
-                [modelKey]="'sectionFourTextEleven'"               
+                [modelKey]="'sectionFourTextEleven'"       
+                [sectionId]="id"        
                 [label]="'Text here is copied over to next control'">
             </text-input-control>
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
                 [initialValue]="maskedValue"
-                [modelKey]="'sectionFourTextTwelve'"         
+                [modelKey]="'sectionFourTextTwelve'"
+                [sectionId]="id"        
                 [label]="'Text input receives copied text'">
             </text-input-control>
         </div>      

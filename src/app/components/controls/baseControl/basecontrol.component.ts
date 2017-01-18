@@ -27,6 +27,9 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   public modelKey: string;
 
   @Input()
+  public sectionId: string;
+
+  @Input()
   public errorKeys: Array<string> = [];
 
   @Output()

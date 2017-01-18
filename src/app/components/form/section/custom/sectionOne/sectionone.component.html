@@ -4,18 +4,21 @@
         #sectionOne
         [label]="'Text Field'"
         [modelKey]="'textFieldKey'"
+        [sectionId]="id"
         [initialValue]="'text field'"></text-input-control>
     <text-input-control
         #sectionOne
         [restrict]="'numeric'"
         [label]="'Text Field just digits'"
         [modelKey]="'textFieldKeyOnlyDigits'"
+        [sectionId]="id"
         [initialValue]="'0123456789'"></text-input-control>
     <text-input-control
             #sectionOne
             [maxLen]="maxLen"
             [label]="'Text Field with variable maxlen'"
-            [modelKey]="'textFieldKeyWithVariableMaxLen'">
+            [modelKey]="'textFieldKeyWithVariableMaxLen'"
+            [sectionId]="id">
     </text-input-control>
     <p>
         <label>Choose maxLen of the above field:</label>
