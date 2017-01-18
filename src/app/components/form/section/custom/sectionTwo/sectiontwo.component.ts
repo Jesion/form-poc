@@ -36,10 +36,10 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
   }
 
   ngOnDestroy() {
-    //this.unhookAll(this.root);
+    this.unhookAll(this.root);
   }
 
   ngAfterViewInit() {
-    //this.hookAll(this.elements, this.fb, this.root);
+    this.hookAll(this.elements, this.fb, this.root);
   }
 }
