@@ -32,9 +32,7 @@
     <p>
         <label>Choose field requirement:</label>
         <input type="radio" id="rF" [(ngModel)]="requiredField" [value]="true"/>
-        <!--       [checked]="requiredField==true" (click)="requiredField=true" name="fieldRequired" type="radio"/>-->
         <label for="rF">Required</label>
-        <!--<input id="nF" [checked]="requiredField==false" (click)="requiredField=false" name="fieldRequired" type="radio"/>-->
         <input type="radio" id="nF" [(ngModel)]="requiredField" [value]="false"/>
         <label for="nF">Not required</label>
     </p>
