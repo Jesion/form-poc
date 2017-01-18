@@ -38,8 +38,8 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
     this.elements.forEach((control) => {
       this._keys.push(control.modelKey);
       if (!this.form) {
-				this.createForm();
-			}
+          this.createForm();
+      }
       this.hookToModel(this.form, control);
     });	
     setTimeout(() => {
@@ -47,12 +47,12 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
     }, 0);
   } 
 
-	private createForm() {
-		this.form = this.fb.group({  });
-		this.form.valueChanges.subscribe((value: any) => {
-			console.log('form x changed: ' + JSON.stringify(value));
-		});
-	}
+  private createForm() {
+    this.form = this.fb.group({  });
+	this.form.valueChanges.subscribe((value: any) => {
+		console.log('form x changed: ' + JSON.stringify(value));
+	});
+  }
 
   private hookToModel(form: FormGroup, control: BaseControlComponent) {
 		form.addControl(control.modelKey, control.baseCtrl);
