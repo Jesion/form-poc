@@ -35,7 +35,6 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   public set requiredField(value: boolean) {
     this._requiredField = value;
-    console.log('Field required: ' + value);
   }
 
   public get requiredField(): boolean {
