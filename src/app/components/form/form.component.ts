@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
 
 	public sectionOneVisible: boolean = false;
 	public sectionTwoVisible: boolean = false;
+	public sectionThreeVisible: boolean = false;
 
 	public dateRequired: boolean;
 
@@ -37,6 +38,10 @@ export class FormComponent implements OnInit {
     public onToggleSectionTwo() {
         this.sectionTwoVisible = !this.sectionTwoVisible;
     }
+
+	public onToggleSectionThree() {
+		this.sectionThreeVisible = !this.sectionThreeVisible;
+	}
 
     public onRequiredChanged($event) {
 		this.dateRequired = $event as boolean;

@@ -7,6 +7,7 @@ import { FormComponent } from './components/form/form.component';
 import { FormSectionComponent } from './components/form/section/section.component';
 import { SectionOneComponent } from './components/form/section/custom/sectionOne/sectionone.component';
 import { SectionTwoComponent } from './components/form/section/custom/sectionTwo/sectiontwo.component';
+import { SectionThreeComponent } from './components/form/section/custom/sectionThree/sectionthree.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
@@ -27,7 +28,8 @@ import { ZipCodeControlComponent } from './components/controls/zipcode.component
         TextControlComponent,
         ControlErrorComponent,
         SectionOneComponent,
-        SectionTwoComponent
+        SectionTwoComponent,
+        SectionThreeComponent
     ],
     imports: [ 
         routing,
