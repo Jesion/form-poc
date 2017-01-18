@@ -20,17 +20,17 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   private _model: FormModel;
 
-  private data: Observable<FormModel>;
+  private data: Observable<boolean>;
 
   @Input()
   public set model(value: FormModel) {
     this._model = value;
     console.log('model ' + value);
-    this.data = Observable.of( value );
+    this.data = Observable.of( value.dateRequired );
     this.data.subscribe(value => this.onValueChange(value))
   }
 
-  private onValueChange(value: any) {
+  private onValueChange(value: boolean) {
     console.log('value change: ' + value);
   }
 
