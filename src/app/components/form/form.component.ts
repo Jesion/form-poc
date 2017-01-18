@@ -62,6 +62,10 @@ export class FormComponent implements OnInit {
 		this.sectionFourVisible = true;
 	}
 
+	public onReset() {
+		this.myForm.reset();
+	}
+
     public onRequiredChanged($event) {
 		this.dateRequired = $event as boolean;
 	}
