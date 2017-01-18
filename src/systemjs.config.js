@@ -23,7 +23,7 @@ System.config({
 	},
 	packages: {
 		'app'								: { main: 'main.js', defaultExtension: 'js' },
-		'rxjs'								: { main: 'index.js' },
+		'rxjs'								: { main: 'Rx.js' },
 		'react'								: { main: 'react.js' },		
 		'react-dom'							: { main: 'react-dom.js' },
 		'underscore'						: { main: 'underscore.js' },
