@@ -17,11 +17,6 @@
             [label]="'Text Field with variable maxlen'"
             [modelKey]="'textFieldKeyWithVariableMaxLen'">
     </text-input-control>
-    <zipcode-control
-            #sectionOne
-            [label]="'Zip Code'"
-            [modelKey]="'zipCode'">
-    </zipcode-control>
     <p>
         <label>Choose maxLen of the above field:</label>
         <input (click)="maxLen=10" id="maxLenCase10" name="maxLenCase" type="radio"/>
@@ -29,8 +24,13 @@
         <input (click)="maxLen=5" id="maxLenCase5" name="maxLenCase" type="radio"/>
         <label for="maxLenCase5">5 chars</label>
     </p>
+    <zipcode-control
+            #sectionOne
+            [label]="'Zip Code'"
+            [modelKey]="'zipCode'">
+    </zipcode-control>
     <p>
-        <label>Choose field requirement:</label>
+        <label>Choose Section 2 Date Field requirement:</label>
         <input type="radio" id="rf" [(ngModel)]="requiredField" [value]="true"/>
         <label for="rf">Required</label>
         <input type="radio" id="nf" [(ngModel)]="requiredField" [value]="false"/>
