@@ -14,8 +14,11 @@ export class FormComponent implements OnInit {
 	public sectionOneVisible: boolean = false;
 	public sectionTwoVisible: boolean = false;
 
-	constructor( private fb: FormBuilder, public model: FormModel ) {
+	public model: FormModel;
+
+	constructor( private fb: FormBuilder ) {
 		this.createForm();
+		this.model = new FormModel();
 	}
 
 	ngOnInit() {

@@ -14,8 +14,7 @@ import { DateControlComponent } from './components/controls/date.component';
 import { NameControlComponent } from './components/controls/name.component';
 import { TextControlComponent } from './components/controls/text.component';
 import { ControlErrorComponent } from './components/controls/error/error.component';
-import { FormModel } from './components/form/form.model';
-import {ZipCodeControlComponent} from './components/controls/zipcode.component';
+import { ZipCodeControlComponent } from './components/controls/zipcode.component';
 
 @NgModule({
     declarations: [ 
@@ -38,7 +37,7 @@ import {ZipCodeControlComponent} from './components/controls/zipcode.component';
         ReactiveFormsModule         
     ],   
     providers: [
-        FormModel
+
     ],
     bootstrap: [ AppComponent ]
 })
