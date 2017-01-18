@@ -8,15 +8,13 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
   templateUrl: 'app/components/form/section/custom/sectionOne/sectionone.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionOneComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionTwoComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
 
-  @ViewChildren('sectionOne')
+  @ViewChildren('sectionTwo')
   public elements: QueryList<BaseControlComponent>;	
 
   @Input()
   public root: FormGroup;
-
-  public form: FormGroup;
 
   public maxLen: number = 100;
 
