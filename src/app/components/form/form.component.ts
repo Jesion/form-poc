@@ -14,11 +14,11 @@ export class FormComponent implements OnInit {
 	public sectionOneVisible: boolean = false;
 	public sectionTwoVisible: boolean = false;
 
-	public model: FormModel;
+	public dateRequired: boolean;
 
 	constructor( private fb: FormBuilder ) {
 		this.createForm();
-		this.model = new FormModel();
+		this.dateRequired = false;
 	}
 
 	ngOnInit() {
@@ -40,8 +40,9 @@ export class FormComponent implements OnInit {
     }
 
     public onRequiredChanged($event) {
-		this.model.dateRequired = $event as boolean;
-		console.log('Model value ' + this.model.dateRequired);
+		this.dateRequired = $event as boolean;
+		//this.model.dateRequired = $event as boolean;
+		//console.log('Model value ' + this.model.dateRequired);
 	}
 
 	private createForm() {

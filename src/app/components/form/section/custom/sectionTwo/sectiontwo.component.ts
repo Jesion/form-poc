@@ -20,6 +20,7 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   private _model: FormModel;
 
+  /*
   private data: Observable<boolean>;
 
   @Input()
@@ -36,6 +37,16 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   public get model(): FormModel {
     return this._model;
+  }
+  */
+
+  private _dateRequired: boolean = false;
+
+  @Input()
+  public set dateRequired(value: boolean) {
+    if (this._dateRequired !== value) {
+      this._dateRequired = value;
+    }
   }
 
   public maxLen: number = 100;
