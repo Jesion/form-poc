@@ -56,9 +56,9 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   private hookToModel(form: FormGroup, control: BaseControlComponent) {
 		form.addControl(control.modelKey, control.baseCtrl);
-	}
+  }
 
   private unhookFromModel(form: FormGroup, modelKey: string) {
 		form.removeControl(modelKey);
-	}
+  }
 }
