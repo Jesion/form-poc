@@ -20,6 +20,12 @@
         [id]="'sectionThree'">
     </section-three>
 
+    <section-four *ngIf="sectionFourVisible==true"
+        [root]="myForm"
+        [label]="'Section Four'"
+        [id]="'sectionFour'">
+    </section-four>    
+
     <fieldset>
         <button class="btn" type="submit"
             [disabled]="myForm.valid==false"
@@ -31,3 +37,6 @@
 <a class="btn" (click)="onToggleSectionOne()">Toggle Section One</a>
 <a class="btn" (click)="onToggleSectionTwo()">Toggle Section Two</a>
 <a class="btn" (click)="onToggleSectionThree()">Toggle Section Three</a>
+<a class="btn" (click)="onToggleSectionFour()">Toggle Section Four</a>
+<a class="btn" (click)="onHideAll()">Hide All</a>
+<a class="btn" (click)="onShowAll()">Show All</a>

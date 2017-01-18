@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
 	public sectionOneVisible: boolean = false;
 	public sectionTwoVisible: boolean = false;
 	public sectionThreeVisible: boolean = false;
+	public sectionFourVisible: boolean = false;
 
 	public dateRequired: boolean;
 
@@ -41,6 +42,24 @@ export class FormComponent implements OnInit {
 
 	public onToggleSectionThree() {
 		this.sectionThreeVisible = !this.sectionThreeVisible;
+	}
+
+	public onToggleSectionFour() {
+		this.sectionFourVisible = !this.sectionFourVisible;
+	}
+
+	public onHideAll() {
+		this.sectionOneVisible = false;
+		this.sectionTwoVisible = false;
+		this.sectionThreeVisible = false;
+		this.sectionFourVisible = false;
+	}
+
+	public onShowAll() {
+		this.sectionOneVisible = true;
+		this.sectionTwoVisible = true;
+		this.sectionThreeVisible = true;
+		this.sectionFourVisible = true;
 	}
 
     public onRequiredChanged($event) {
