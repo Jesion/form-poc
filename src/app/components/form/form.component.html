@@ -1,7 +1,7 @@
 <form [formGroup]="myForm">
 
     <section-one *ngIf="sectionOneVisible==true"
-        [requiredChanged]="onRequiredChanged()"
+        (requiredChanged)="onRequiredChanged($event)"
         [root]="myForm"
         [label]="'Section One'"        
         [id]="'sectionOne'">

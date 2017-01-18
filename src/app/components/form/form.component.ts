@@ -36,6 +36,10 @@ export class FormComponent implements OnInit {
         this.sectionTwoVisible = !this.sectionTwoVisible;
     }
 
+    public onRequiredChanged($event) {
+		
+	}
+
 	private createForm() {
 		this.myForm = this.fb.group({  });
 		this.myForm.valueChanges.subscribe((value: any) => {
