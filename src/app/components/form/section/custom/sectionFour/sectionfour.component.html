@@ -68,14 +68,16 @@
         </div>
         <div class="col s3">
             <text-input-control #sectionFour
+                (maskedValueChanged)="onMaskedValueChanged($event)"
                 [modelKey]="'sectionFourTextEleven'"               
-                [label]="'Text input'">
+                [label]="'Text here is copied over to next control'">
             </text-input-control>
-        </div>  
+        </div>
         <div class="col s3">
             <text-input-control #sectionFour
+                [initialValue]="maskedValue"
                 [modelKey]="'sectionFourTextTwelve'"         
-                [label]="'Text input'">
+                [label]="'Text input receives copied text'">
             </text-input-control>
         </div>      
     </div>

@@ -27,4 +27,10 @@ export class SectionFourComponent extends FormSectionComponent implements AfterV
   ngAfterViewInit() {
     this.hookAll(this.elements, this.fb, this.root);
   }
+
+  public maskedValue: string;
+
+  public onMaskedValueChanged($event) {
+    this.maskedValue = $event as string;
+  }
 }

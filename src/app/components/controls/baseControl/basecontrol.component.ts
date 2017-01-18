@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, AfterViewInit, OnInit} from '@angular/core';
+import {Component, forwardRef, Input, Output, AfterViewInit, OnInit, EventEmitter} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, Validators} from '@angular/forms';
 import {MaskPart, Mask, Restrict} from './basecontrol.mask';
 
@@ -29,6 +29,9 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   @Input()
   public errorKeys: Array<string> = [];
 
+  @Output()
+  public maskedValueChanged: EventEmitter<string> = new EventEmitter<string>();
+
   public maxLen: number = -1;
 
   protected _restrict: string = Restrict.NONE;
@@ -44,7 +47,8 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   private set maskedValue(value: string) {
     if (this._maskedValue !== value) {
       this._maskedValue = value;
-      this._baseCtrl.setValue( this.maskedValue );
+      this._baseCtrl.setValue(this.maskedValue);
+      this.maskedValueChanged.emit(this.maskedValue);
     }
   }
 
