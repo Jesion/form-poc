@@ -5,4 +5,10 @@
         [label]="'Text Field'"
         [modelKey]="'textFieldKey'"
         [initialValue]="'text field'"></text-input-control>
+    <text-input-control
+        #sectionOne
+        [restrict]="'numeric'"
+        [label]="'Text Field just digits'"
+        [modelKey]="'textFieldKeyOnlyDigits'"
+        [initialValue]="'0123456789'"></text-input-control>
 </fieldset>
