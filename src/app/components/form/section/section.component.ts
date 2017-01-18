@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, QueryList} from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {BaseControlComponent} from '../../controls/baseControl/basecontrol.component';
 
@@ -32,5 +32,28 @@ export class FormSectionComponent {
     this.form.valueChanges.subscribe((value: any) => {
       console.log('sub form changed: ' + JSON.stringify(value));
     });
+  }
+
+  protected unhookAll(root: FormGroup) {
+    console.log('destroy...');
+    this.keys.forEach((key) => {
+      this.unhookFromModel(this.form, key);
+    });
+    setTimeout(() => {
+      root.removeControl(this.id);
+    }, 0)
+  }
+
+  protected hookAll(elements: QueryList<BaseControlComponent>, fb: FormBuilder, root: FormGroup) {
+    elements.forEach((control) => {
+      this.keys.push(control.modelKey);
+      if (!this.form) {
+        this.createForm(fb);
+      }
+      this.hookToModel(this.form, control);
+    });
+    setTimeout(() => {
+      root.addControl(this.id, this.form);
+    }, 0);
   }
 }
