@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
 import { FormModel } from '../../../form.model';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Component({
   selector: 'section-two',
@@ -20,10 +20,18 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   private _model: FormModel;
 
+  private data: Observable<FormModel>;
+
   @Input()
   public set model(value: FormModel) {
     this._model = value;
     console.log('model ' + value);
+    this.data = Observable.of( value );
+    this.data.subscribe(value => this.onValueChange(value))
+  }
+
+  private onValueChange(value: any) {
+    console.log('value change: ' + value);
   }
 
   public get model(): FormModel {
