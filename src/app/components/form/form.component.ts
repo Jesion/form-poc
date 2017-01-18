@@ -1,9 +1,6 @@
-import { Component, OnInit, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { BaseControlComponent } from '../controls/baseControl/basecontrol.component';
-import { FormSectionComponent } from './section/section.component';
 import { FormModel } from './form.model';
-import { Section } from './section/section';
 
 @Component({
 	selector: 'my-form',
@@ -38,23 +35,6 @@ export class FormComponent implements OnInit {
     public onToggleSectionTwo() {
         this.sectionTwoVisible = !this.sectionTwoVisible;
     }
-
-	private hookToModel(control: BaseControlComponent) {
-		console.log('hooking ' + control.modelKey);
-		setTimeout(() => {
-			if (Object.keys(this.myForm.controls).length == 0) {
-				this.createForm();
-			}
-			this.myForm.addControl(control.modelKey, control.baseCtrl);
-		}, 0);
-	}
-
-	private unhookFromModel(modelKey: string) {
-		console.log('unhooking ' + modelKey);
-		setTimeout(() => {
-			this.myForm.removeControl(modelKey);
-		}, 0);		
-	}
 
 	private createForm() {
 		this.myForm = this.fb.group({  });
