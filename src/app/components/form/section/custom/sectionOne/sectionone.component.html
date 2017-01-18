@@ -17,11 +17,11 @@
             [label]="'Text Field with variable maxlen'"
             [modelKey]="'textFieldKeyWithVariableMaxLen'">
     </text-input-control>
-    <text-input-control
+    <zipcode-control
             #sectionOne
             [label]="'Zip Code'"
             [modelKey]="'zipCode'">
-    </text-input-control>
+    </zipcode-control>
     <p>
         <label>Choose maxLen of the above field:</label>
         <input (click)="maxLen=10" id="maxLenCase10" name="maxLenCase" type="radio"/>

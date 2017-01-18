@@ -45,7 +45,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 		console.log('ngAfterViewInit...');
-		this.registerSection( this.sectionA, 'sectionA' );		
+		this.registerSection( this.sectionA, 'sectionA' );
 		this.registerSection( this.sectionB, 'sectionB' );
 		this.registerSection( this.sectionC, 'sectionC' );
 	}
@@ -68,7 +68,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 							this.unhookFromModel(control.modelKey);
 						});
 					}
-				} else {			
+				} else {
 					//registering controls
 					all.forEach((component) => {
 						if (component instanceof BaseControlComponent) {
@@ -102,6 +102,14 @@ export class FormComponent implements OnInit, AfterViewInit {
 	public onToggleSectionC() {
 		this.sectionCVisible = !this.sectionCVisible;
 	}
+
+	public onToggleSectionOne() {
+        this.sectionOneVisible = !this.sectionOneVisible;
+    }
+
+    public onToggleSectionTwo() {
+        this.sectionTwoVisible = !this.sectionTwoVisible;
+    }
 
 	private hookToModel(control: BaseControlComponent) {
 		console.log('hooking ' + control.modelKey);
