@@ -17,4 +17,11 @@
             [label]="'Text Field with variable maxlen'"
             [modelKey]="'textFieldKeyWithVariableMaxLen'"
             [initialValue]="'test string'"></text-input-control>
+    <p>
+        <label>Choose maxLen of the above field:</label>
+        <input (click)="maxLen=10" id="maxLenCase10" name="maxLenCase" type="radio"/>
+        <label for="maxLenCase10">10 chars</label>
+        <input (click)="maxLen=5" id="maxLenCase5" name="maxLenCase" type="radio"/>
+        <label for="maxLenCase5">5 chars</label>
+    </p>
 </fieldset>
