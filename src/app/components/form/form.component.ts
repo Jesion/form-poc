@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { FormModel } from './form.model';
 
 @Component({
 	selector: 'my-form',
@@ -41,8 +40,6 @@ export class FormComponent implements OnInit {
 
     public onRequiredChanged($event) {
 		this.dateRequired = $event as boolean;
-		//this.model.dateRequired = $event as boolean;
-		//console.log('Model value ' + this.model.dateRequired);
 	}
 
 	private createForm() {
