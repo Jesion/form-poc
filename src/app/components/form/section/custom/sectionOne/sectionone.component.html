@@ -24,4 +24,11 @@
         <input (click)="maxLen=5" id="maxLenCase5" name="maxLenCase" type="radio"/>
         <label for="maxLenCase5">5 chars</label>
     </p>
+    <p>
+        <label>Choose field requirement:</label>
+        <input (click)="requiredField=true" id="fieldRequiredTrue" name="fieldXRequired" type="radio"/>
+        <label for="fieldRequiredTrue">Required</label>
+        <input (click)="requiredField=false" id="fieldRequiredFalse" name="fieldRequired" type="radio"/>
+        <label for="fieldRequiredFalse">Not required</label>
+    </p>
 </fieldset>

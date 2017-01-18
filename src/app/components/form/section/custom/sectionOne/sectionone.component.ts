@@ -20,7 +20,18 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   public form: FormGroup;
 
-  public maxLen: number = 6;
+  public maxLen: number = 100;
+
+  private _requiredField: boolean = false;
+
+  public set requiredField(value: boolean) {
+    this._requiredField = value;
+    console.log('Field required: ' + value);
+  }
+
+  public get requiredField(): boolean {
+    return this._requiredField;
+  }
 
   constructor( private fb: FormBuilder ) {
     super();
