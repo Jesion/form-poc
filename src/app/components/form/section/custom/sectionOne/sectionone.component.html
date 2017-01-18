@@ -1,8 +1,39 @@
 <fieldset>
     <label>{{label}}</label>
-    <name-control 
+    <text-input-control
         #sectionOne
         [label]="'Text Field'"
         [modelKey]="'textFieldKey'"
-        [initialValue]="'text field'"></name-control>
+        [initialValue]="'text field'"></text-input-control>
+    <text-input-control
+        #sectionOne
+        [restrict]="'numeric'"
+        [label]="'Text Field just digits'"
+        [modelKey]="'textFieldKeyOnlyDigits'"
+        [initialValue]="'0123456789'"></text-input-control>
+    <text-input-control
+            #sectionOne
+            [maxLen]="maxLen"
+            [label]="'Text Field with variable maxlen'"
+            [modelKey]="'textFieldKeyWithVariableMaxLen'">
+    </text-input-control>
+    <zipcode-control
+            #sectionOne
+            [label]="'Zip Code'"
+            [modelKey]="'zipCode'">
+    </zipcode-control>
+    <p>
+        <label>Choose maxLen of the above field:</label>
+        <input (click)="maxLen=10" id="maxLenCase10" name="maxLenCase" type="radio"/>
+        <label for="maxLenCase10">10 chars</label>
+        <input (click)="maxLen=5" id="maxLenCase5" name="maxLenCase" type="radio"/>
+        <label for="maxLenCase5">5 chars</label>
+    </p>
+    <p>
+        <label>Choose field requirement:</label>
+        <input type="radio" id="rf" [(ngModel)]="requiredField" [value]="true"/>
+        <label for="rf">Required</label>
+        <input type="radio" id="nf" [(ngModel)]="requiredField" [value]="false"/>
+        <label for="nf">Not required</label>
+    </p>
 </fieldset>

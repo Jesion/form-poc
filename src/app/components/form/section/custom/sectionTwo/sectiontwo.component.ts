@@ -1,35 +1,40 @@
-import { Component, Input, Output, QueryList, ViewChildren, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
 
 @Component({
-  selector: 'section-one',
-  templateUrl: 'app/components/form/section/custom/sectionOne/sectionone.component.html',
+  selector: 'section-two',
+  templateUrl: 'app/components/form/section/custom/sectionTwo/sectiontwo.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionOneComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionTwoComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
 
-  @ViewChildren('sectionOne')
+  @ViewChildren('sectionTwo')
   public elements: QueryList<BaseControlComponent>;	
 
   @Input()
   public root: FormGroup;
 
-  public form: FormGroup;
+  private _dateRequired: boolean = false;
+
+  @Input()
+  public set dateRequired(value: boolean) {
+    if (this._dateRequired !== value) {
+      this._dateRequired = value;
+    }
+  }
+
+  public get dateRequired(): boolean {
+    return this._dateRequired;
+  }
 
   public maxLen: number = 100;
 
   private _requiredField: boolean = false;
 
-  @Output()
-  public requiredChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   public set requiredField(value: boolean) {
-    if (value !== this._requiredField) {
-      this._requiredField = value;
-      this.requiredChanged.emit(value);
-    }
+    this._requiredField = value;
   }
 
   public get requiredField(): boolean {
@@ -45,6 +50,6 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root );
+    this.hookAll(this.elements, this.fb, this.root);
   }
 }
