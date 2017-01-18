@@ -1,8 +1,7 @@
-import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, Input, Output, QueryList, ViewChildren, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
-import { Output } from 'gulp-typescript/release/output';
 
 @Component({
   selector: 'section-one',
@@ -23,13 +22,13 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   private _requiredField: boolean = false;
 
-  @Output
-  public requiredChanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  public requiredChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public set requiredField(value: boolean) {
     if (value !== this._requiredField) {
       this._requiredField = value;
-      this.requiredChanged.emit(null);
+      this.requiredChanged.emit(value);
     }
   }
 
