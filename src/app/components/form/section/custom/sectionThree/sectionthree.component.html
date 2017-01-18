@@ -1,0 +1,29 @@
+<fieldset>
+    <label>{{label}}</label>
+    <div class="row">
+        <div class="col s4">
+            <date-control #sectionThree
+                [modelKey]="'sectionThreeDateOne'"
+                [required]="dateRequired"
+                [allowFutureDate]="false"
+                [label]="'Some other date'">
+            </date-control>
+        </div>
+        <div class="col s4">
+            <date-control #sectionThree
+                [modelKey]="'sectionThreeDateTwo'"
+                [required]="dateRequired"
+                [allowFutureDate]="false"
+                [label]="'Yet another date'">
+            </date-control>
+        </div>
+        <div class="col s4">
+            <date-control #sectionThree
+                [modelKey]="'sectionThreeDateThree'"
+                [required]="dateRequired"
+                [allowFutureDate]="false"
+                [label]="'Yet another date'">
+            </date-control>
+        </div>    
+    </div>
+</fieldset>
