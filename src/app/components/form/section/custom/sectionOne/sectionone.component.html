@@ -11,4 +11,10 @@
         [label]="'Text Field just digits'"
         [modelKey]="'textFieldKeyOnlyDigits'"
         [initialValue]="'0123456789'"></text-input-control>
+    <text-input-control
+            #sectionOne
+            [maxLen]="maxLen"
+            [label]="'Text Field with variable maxlen'"
+            [modelKey]="'textFieldKeyWithVariableMaxLen'"
+            [initialValue]="'test string'"></text-input-control>
 </fieldset>

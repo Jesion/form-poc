@@ -20,6 +20,8 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   public form: FormGroup;
 
+  public maxLen: number = 6;
+
   constructor( private fb: FormBuilder ) {
     super();
   }
