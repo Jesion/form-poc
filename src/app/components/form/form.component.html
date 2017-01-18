@@ -1,5 +1,6 @@
 <form [formGroup]="myForm">
 
+    <!--
     <form-section [label]="'Section A'"
         [id]="sectionA"
         #sectionA
@@ -62,6 +63,7 @@
             #sectionC>
         </name-control>
     </form-section>
+    -->
 
     <section-one *ngIf="sectionOneVisible==true"
         [root]="myForm"
@@ -83,8 +85,9 @@
 
 </form>
 
+<!--
 <a class="btn" (click)="onToggleSectionA()">Toggle Section A</a>
 <a class="btn" (click)="onToggleSectionB()">Toggle Section B</a>
-<a class="btn" (click)="onToggleSectionC()">Toggle Section C</a>
+<a class="btn" (click)="onToggleSectionC()">Toggle Section C</a>-->
 <a class="btn" (click)="onToggleSectionOne()">Toggle Section One</a>
 <a class="btn" (click)="onToggleSectionTwo()">Toggle Section Two</a>
