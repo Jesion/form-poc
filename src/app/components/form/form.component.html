@@ -1,77 +1,12 @@
 <form [formGroup]="myForm">
 
-    <!--
-    <form-section [label]="'Section A'"
-        [id]="sectionA"
-        #sectionA
-        *ngIf="sectionAVisible==true">
-        <date-control #sectionA
-            [modelKey]="'date1'"
-            [initialValue]="'20200101'"
-            [required]="true"
-            [allowFutureDate]="false"
-            [label]="'Date One'">
-        </date-control>
-        <date-control #sectionA
-            [modelKey]="'date2'"
-            [initialValue]="'20030101'"
-            [required]="true"
-            [allowFutureDate]="false"
-            [label]="'Date Two'">
-        </date-control>
-        <date-control #sectionA
-            [modelKey]="'date3'"
-            [initialValue]="'19990101'"
-            [required]="true"
-            [allowFutureDate]="false"
-            [label]="'Date Three'">
-        </date-control>
-    </form-section>
-
-    <form-section [label]="'Section B'"
-        [id]="sectionB"
-        #sectionB
-        *ngIf="sectionBVisible==true">
-        <date-control #sectionB
-            [modelKey]="'date4'"
-            [initialValue]="'19780503'"
-            [required]="true"
-            [allowFutureDate]="false"
-            [label]="'Date Four'">
-        </date-control>
-        <name-control #sectionB
-            [modelKey]="'name'"
-            [initialValue]="'Jesionek'"
-            [label]="'Name'">
-        </name-control>
-    </form-section>
-
-    <form-section [label]="'Section C'"
-        [id]="sectionC"
-        #sectionC
-        *ngIf="sectionCVisible==true">
-        <name-control
-            [initialValue]="'Robert'"
-            [label]="'Firstname'"
-            [modelKey]="'firstName'"
-            #sectionC>
-        </name-control>
-        <name-control
-            [initialValue]="'Jesionek'"
-            [label]="'Lastname'"
-            [modelKey]="'lastName'"
-            #sectionC>
-        </name-control>
-    </form-section>
-    -->
-
     <section-one *ngIf="sectionOneVisible==true"
         [root]="myForm"
         [label]="'Section One'"        
         [id]="'sectionOne'">
     </section-one>
 
-    <section-two *ngIf="sectionTwoVisible==false"
+    <section-two *ngIf="sectionTwoVisible==true"
         [root]="myForm"
         [label]="'Section Two'"
         [id]="'sectionTwo'">
@@ -85,9 +20,5 @@
 
 </form>
 
-<!--
-<a class="btn" (click)="onToggleSectionA()">Toggle Section A</a>
-<a class="btn" (click)="onToggleSectionB()">Toggle Section B</a>
-<a class="btn" (click)="onToggleSectionC()">Toggle Section C</a>-->
 <a class="btn" (click)="onToggleSectionOne()">Toggle Section One</a>
 <a class="btn" (click)="onToggleSectionTwo()">Toggle Section Two</a>
