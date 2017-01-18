@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
 import {FormModel} from '../../../form.model';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'section-two',
@@ -34,6 +35,10 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   constructor( private fb: FormBuilder, private model: FormModel ) {
     super();
+
+    new BehaviorSubject( model.dateRequired ).subscribe( (value) => {
+      console.log('new value ' + value);
+    });
   }
 
   ngOnDestroy() {
