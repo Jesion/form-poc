@@ -2,6 +2,7 @@ import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy } f
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
+import {FormModel} from '../../../form.model';
 
 @Component({
   selector: 'section-two',
@@ -31,7 +32,7 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
     return this._requiredField;
   }
 
-  constructor( private fb: FormBuilder ) {
+  constructor( private fb: FormBuilder, private model: FormModel ) {
     super();
   }
 
