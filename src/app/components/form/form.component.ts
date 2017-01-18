@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
     }
 
     public onRequiredChanged($event) {
-		
+		this.model.dateRequired = $event as boolean;
 	}
 
 	private createForm() {
