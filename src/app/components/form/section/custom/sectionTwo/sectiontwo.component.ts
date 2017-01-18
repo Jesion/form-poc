@@ -2,8 +2,6 @@ import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy } f
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
-import { FormModel } from '../../../form.model';
-import {BehaviorSubject, Observable} from 'rxjs';
 
 @Component({
   selector: 'section-two',
@@ -18,28 +16,6 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
   @Input()
   public root: FormGroup;
 
-  private _model: FormModel;
-
-  /*
-  private data: Observable<boolean>;
-
-  @Input()
-  public set model(value: FormModel) {
-    this._model = value;
-    console.log('model ' + value);
-    this.data = Observable.of( value.dateRequired );
-    this.data.subscribe(value => this.onValueChange(value))
-  }
-
-  private onValueChange(value: boolean) {
-    console.log('value change: ' + value);
-  }
-
-  public get model(): FormModel {
-    return this._model;
-  }
-  */
-
   private _dateRequired: boolean = false;
 
   @Input()
@@ -49,11 +25,13 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
     }
   }
 
+  public get dateRequired(): boolean {
+    return this._dateRequired;
+  }
+
   public maxLen: number = 100;
 
   private _requiredField: boolean = false;
-
-  public dateRequired: boolean = false;
 
   public set requiredField(value: boolean) {
     this._requiredField = value;
@@ -66,11 +44,6 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   constructor( private fb: FormBuilder ) {
     super();
-/*
-    new BehaviorSubject<boolean>( model.dateRequired ).subscribe( (value) => {
-      console.log('new value ' + value);
-    });
-    */
   }
 
   ngOnDestroy() {
