@@ -8,6 +8,16 @@ form {
 }
 
 .console {
-    margin-bottom: 20px;
-    margin-left: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.modelLog {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  textarea {
+    padding: 20px;
+    width: 600px;
+    height: 300px;
+  }
 }

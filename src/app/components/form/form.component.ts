@@ -66,10 +66,12 @@ export class FormComponent implements OnInit {
 		this.dateRequired = $event as boolean;
 	}
 
+	public currentModel: string;
+
 	private createForm() {
 		this.myForm = this.fb.group({  });
 		this.myForm.valueChanges.subscribe((value: any) => {
-			console.log('form changed: ' + JSON.stringify(value));
+			this.currentModel = JSON.stringify(value);
 		});
 	}
 }
