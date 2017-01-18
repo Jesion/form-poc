@@ -38,6 +38,7 @@ export class FormComponent implements OnInit {
 
     public onRequiredChanged($event) {
 		this.model.dateRequired = $event as boolean;
+		console.log('Model value ' + this.model.dateRequired);
 	}
 
 	private createForm() {
