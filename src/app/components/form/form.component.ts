@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
 	public sectionOneVisible: boolean = false;
 	public sectionTwoVisible: boolean = false;
 
-	constructor( private fb: FormBuilder, private model: FormModel ) {
+	constructor( private fb: FormBuilder, public model: FormModel ) {
 		this.createForm();
 	}
 

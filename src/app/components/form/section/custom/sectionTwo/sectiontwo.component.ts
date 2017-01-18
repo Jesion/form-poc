@@ -2,8 +2,8 @@ import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy } f
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
-import {FormModel} from '../../../form.model';
-import {BehaviorSubject} from 'rxjs';
+import { FormModel } from '../../../form.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'section-two',
@@ -17,6 +17,18 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   @Input()
   public root: FormGroup;
+
+  private _model: FormModel;
+
+  @Input()
+  public set model(value: FormModel) {
+    this._model = value;
+    console.log('model ' + value);
+  }
+
+  public get model(): FormModel {
+    return this._model;
+  }
 
   public maxLen: number = 100;
 
@@ -33,12 +45,13 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
     return this._requiredField;
   }
 
-  constructor( private fb: FormBuilder, private model: FormModel ) {
+  constructor( private fb: FormBuilder ) {
     super();
-
-    new BehaviorSubject( model.dateRequired ).subscribe( (value) => {
+/*
+    new BehaviorSubject<boolean>( model.dateRequired ).subscribe( (value) => {
       console.log('new value ' + value);
     });
+    */
   }
 
   ngOnDestroy() {

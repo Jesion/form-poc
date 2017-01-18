@@ -8,6 +8,7 @@
     </section-one>
 
     <section-two *ngIf="sectionTwoVisible==true"
+        [model]="model"
         [root]="myForm"
         [label]="'Section Two'"
         [id]="'sectionTwo'">
