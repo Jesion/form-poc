@@ -5,8 +5,8 @@
             <date-control #sectionThree
                 [modelKey]="'sectionThreeDateOne'"
                 [required]="dateRequired"
-                [allowFutureDate]="false"
-                [label]="'Some other date'">
+                [allowFutureDate]="true"
+                [label]="'This date allows future date entry'">
             </date-control>
         </div>
         <div class="col s4">
@@ -14,7 +14,7 @@
                 [modelKey]="'sectionThreeDateTwo'"
                 [required]="dateRequired"
                 [allowFutureDate]="false"
-                [label]="'Yet another date'">
+                [label]="'Date - not in future'">
             </date-control>
         </div>
         <div class="col s4">
@@ -22,7 +22,7 @@
                 [modelKey]="'sectionThreeDateThree'"
                 [required]="dateRequired"
                 [allowFutureDate]="false"
-                [label]="'Yet another date'">
+                [label]="'Date - not in future'">
             </date-control>
         </div>    
     </div>
