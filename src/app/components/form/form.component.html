@@ -2,6 +2,7 @@
 
     <section-one *ngIf="sectionOneVisible==true"
         (requiredChanged)="onRequiredChanged($event)"
+        (sectionTwoOpenChanged)="onSectionTwoOpenChanged($event)"
         [root]="myForm"
         [label]="'Section One'"        
         [id]="'sectionOne'">

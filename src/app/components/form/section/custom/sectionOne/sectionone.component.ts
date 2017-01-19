@@ -20,6 +20,21 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   public maxLen: number = 100;
 
+  private _sectionTwoOpen: boolean = false;
+
+  @Output()
+  public sectionTwoOpenChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public set sectionTwoOpen(value: boolean) {
+    if (value === this._sectionTwoOpen) {
+      this._sectionTwoOpen = value;
+    }
+  }
+
+  public get sectionTwoOpen(): boolean {
+    return this._sectionTwoOpen;
+  }
+
   private _requiredField: boolean = false;
 
   @Output()

@@ -17,6 +17,8 @@ export class FormComponent implements OnInit {
 
 	public dateRequired: boolean;
 
+	public sectionTwoOpen: boolean = false;
+
 	constructor( private fb: FormBuilder ) {
 		this.createForm();
 		this.dateRequired = false;
@@ -68,6 +70,10 @@ export class FormComponent implements OnInit {
 
     public onRequiredChanged($event) {
 		this.dateRequired = $event as boolean;
+	}
+
+	public onSectionTwoOpenChanged($event) {
+		//this.section
 	}
 
 	public currentModel: string;
