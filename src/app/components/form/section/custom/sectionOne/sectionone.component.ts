@@ -26,13 +26,18 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
   public sectionTwoOpenChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public set sectionTwoOpen(value: boolean) {
-    if (value === this._sectionTwoOpen) {
+    if (value !== this._sectionTwoOpen) {
       this._sectionTwoOpen = value;
+      this.sectionTwoOpenChanged.emit(value);
     }
   }
 
   public get sectionTwoOpen(): boolean {
     return this._sectionTwoOpen;
+  }
+
+  public onChange($event): void {
+    this.sectionTwoOpen = $event.target.checked;
   }
 
   private _requiredField: boolean = false;
