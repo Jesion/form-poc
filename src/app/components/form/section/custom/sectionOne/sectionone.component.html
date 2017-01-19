@@ -39,6 +39,8 @@
         <label for="rf">Required</label>
         <input type="radio" id="nf" [(ngModel)]="requiredField" [value]="false"/>
         <label for="nf">Not required</label>
+    </p>
+    <p>
         <label>Section 2 open:</label>
         <input type="checkbox" [checked]="sectionTwoOpen" (change)="onChange($event)"/>
     </p>
