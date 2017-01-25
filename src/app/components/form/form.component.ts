@@ -23,9 +23,7 @@ export class FormComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		setTimeout(() => {
-			this.sectionOneVisible = true;
-		}, 0);
+		this.sectionOneVisible = true;
 	}
 
 	public onSubmit(value: any) {
@@ -70,12 +68,7 @@ export class FormComponent implements OnInit {
 		this.dateRequired = $event as boolean;
 	}
 
-	public currentModel: string;
-
 	private createForm() {
 		this.myForm = this.fb.group({  });
-		this.myForm.valueChanges.subscribe((value: any) => {
-			this.currentModel = JSON.stringify(value);
-		});
 	}
 }

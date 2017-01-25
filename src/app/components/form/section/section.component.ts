@@ -29,18 +29,13 @@ export class FormSectionComponent {
 
   protected createForm(fb: FormBuilder) {
     this.form = fb.group({  });
-    this.form.valueChanges.subscribe((value: any) => {
-      
-    });
   }
 
   protected unhookAll(root: FormGroup) {
     this.keys.forEach((key) => {
       this.unhookFromModel(this.form, key);
     });
-    setTimeout(() => {
-      root.removeControl(this.id);
-    }, 0)
+    root.removeControl(this.id);
   }
 
   protected hookAll(elements: QueryList<BaseControlComponent>, fb: FormBuilder, root: FormGroup) {
@@ -51,8 +46,6 @@ export class FormSectionComponent {
       }
       this.hookToModel(this.form, control);
     });
-    setTimeout(() => {
-      root.addControl(this.id, this.form);
-    }, 0);
+    root.addControl(this.id, this.form);
   }
 }
