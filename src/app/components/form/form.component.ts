@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.sectionOneVisible = true;
+	
 	}
 
 	public onSubmit(value: any) {
@@ -69,6 +69,7 @@ export class FormComponent implements OnInit {
 
 	public onLoadData() {
 		this.model.load();
+		this.onShowAll();
 	}
 
     public onRequiredChanged($event) {
