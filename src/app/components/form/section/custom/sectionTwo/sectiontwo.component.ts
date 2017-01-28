@@ -8,13 +8,12 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
   templateUrl: 'app/components/form/section/custom/sectionTwo/sectiontwo.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionTwoComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionTwoComponent extends FormSectionComponent {
 
   @ViewChildren('sectionTwo')
-  public elements: QueryList<BaseControlComponent>;	
-
-  @Input()
-  public root: FormGroup;
+  public set sectionElements(value: QueryList<BaseControlComponent>) {
+    this.elements = value;
+  }
 
   private _dateRequired: boolean = false;
 
@@ -43,13 +42,5 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
 
   constructor( fb: FormBuilder ) {
     super( fb );
-  }
-
-  ngOnDestroy() {
-    this.unhookAll(this.root);
-  }
-
-  ngAfterViewInit() {
-    this.hookAll(this.elements, this.root);
   }
 }

@@ -20,6 +20,11 @@ export class FormSectionComponent {
   @Input()
   public model: FormModel;
 
+  @Input()
+  public root: FormGroup;
+
+  public elements: QueryList<BaseControlComponent>;	
+
   public form: FormGroup;
 
   protected keys: Array<string> = [];
@@ -66,5 +71,13 @@ export class FormSectionComponent {
         this.form.patchValue(section);
       }, 0);
     }
+  }
+
+  ngOnDestroy() {
+    this.unhookAll(this.root);
+  }
+
+  ngAfterViewInit() {
+    this.hookAll(this.elements, this.root);
   }
 }

@@ -8,15 +8,12 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
   templateUrl: 'app/components/form/section/custom/sectionOne/sectionone.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionOneComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionOneComponent extends FormSectionComponent {
 
   @ViewChildren('sectionOne')
-  public elements: QueryList<BaseControlComponent>;	
-
-  @Input()
-  public root: FormGroup;
-
-  public form: FormGroup;
+  public set sectionOneElements(value: QueryList<BaseControlComponent>) {
+    this.elements = value;
+  }
 
   public maxLen: number = 100;
 
@@ -38,13 +35,5 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
 
   constructor( fb: FormBuilder ) {
     super( fb );
-  }
-
-  ngOnDestroy() {
-    this.unhookAll(this.root);
-  }
-
-  ngAfterViewInit() {
-    this.hookAll(this.elements, this.root);
   }
 }

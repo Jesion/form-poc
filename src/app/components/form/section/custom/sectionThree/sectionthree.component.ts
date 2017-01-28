@@ -8,23 +8,14 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
   templateUrl: 'app/components/form/section/custom/sectionThree/sectionthree.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionThreeComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionThreeComponent extends FormSectionComponent {
 
   @ViewChildren('sectionThree')
-  public elements: QueryList<BaseControlComponent>;	
-
-  @Input()
-  public root: FormGroup;
+  public set sectionElements(value: QueryList<BaseControlComponent>) {
+    this.elements = value;
+  }
 
   constructor( fb: FormBuilder ) {
     super( fb );
-  }
-
-  ngOnDestroy() {
-    this.unhookAll(this.root);
-  }
-
-  ngAfterViewInit() {
-    this.hookAll(this.elements, this.root);
   }
 }

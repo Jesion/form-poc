@@ -8,24 +8,15 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
   templateUrl: 'app/components/form/section/custom/sectionFour/sectionfour.component.html',
   styleUrls: ['app/components/form/section/section.component.css']
 })
-export class SectionFourComponent extends FormSectionComponent implements AfterViewInit, OnDestroy {
+export class SectionFourComponent extends FormSectionComponent {
 
   @ViewChildren('sectionFour')
-  public elements: QueryList<BaseControlComponent>;	
-
-  @Input()
-  public root: FormGroup;
+  public set sectionElements(value: QueryList<BaseControlComponent>) {
+    this.elements = value;
+  }
 
   constructor( fb: FormBuilder ) {
     super( fb );
-  }
-
-  ngOnDestroy() {
-    this.unhookAll(this.root);
-  }
-
-  ngAfterViewInit() {
-    this.hookAll(this.elements, this.root);
   }
 
   public maskedValue: string;
