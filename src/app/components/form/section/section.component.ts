@@ -56,6 +56,7 @@ export class FormSectionComponent {
       this.hookToModel(this.form, control);
     });
     root.addControl(this.id, this.form);
+    this.initModel();
   }
 
   protected initModel() {
@@ -65,9 +66,5 @@ export class FormSectionComponent {
         this.form.patchValue(section);
       }, 0);
     }
-  }
-
-  ngAfterViewChecked() {
-    this.initModel();
   }
 }
