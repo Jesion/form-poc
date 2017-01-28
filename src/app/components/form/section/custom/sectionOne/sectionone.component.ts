@@ -1,4 +1,4 @@
-import { Component, Input, Output, QueryList, ViewChildren, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, Input, Output, QueryList, ViewChildren, AfterViewInit, OnDestroy, OnInit, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
@@ -36,8 +36,8 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
     return this._requiredField;
   }
 
-  constructor( private fb: FormBuilder ) {
-    super();
+  constructor( fb: FormBuilder ) {
+    super( fb );
   }
 
   ngOnDestroy() {
@@ -45,6 +45,6 @@ export class SectionOneComponent extends FormSectionComponent implements AfterVi
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root );
+    this.hookAll(this.elements, this.root);
   }
 }

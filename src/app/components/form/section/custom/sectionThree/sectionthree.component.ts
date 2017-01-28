@@ -16,8 +16,8 @@ export class SectionThreeComponent extends FormSectionComponent implements After
   @Input()
   public root: FormGroup;
 
-  constructor( private fb: FormBuilder ) {
-    super();
+  constructor( fb: FormBuilder ) {
+    super( fb );
   }
 
   ngOnDestroy() {
@@ -25,6 +25,6 @@ export class SectionThreeComponent extends FormSectionComponent implements After
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root);
+    this.hookAll(this.elements, this.root);
   }
 }

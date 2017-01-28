@@ -41,8 +41,8 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
     return this._requiredField;
   }
 
-  constructor( private fb: FormBuilder ) {
-    super();
+  constructor( fb: FormBuilder ) {
+    super( fb );
   }
 
   ngOnDestroy() {
@@ -50,6 +50,6 @@ export class SectionTwoComponent extends FormSectionComponent implements AfterVi
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root);
+    this.hookAll(this.elements, this.root);
   }
 }

@@ -16,8 +16,8 @@ export class SectionFourComponent extends FormSectionComponent implements AfterV
   @Input()
   public root: FormGroup;
 
-  constructor( private fb: FormBuilder ) {
-    super();
+  constructor( fb: FormBuilder ) {
+    super( fb );
   }
 
   ngOnDestroy() {
@@ -25,7 +25,7 @@ export class SectionFourComponent extends FormSectionComponent implements AfterV
   }
 
   ngAfterViewInit() {
-    this.hookAll(this.elements, this.fb, this.root);
+    this.hookAll(this.elements, this.root);
   }
 
   public maskedValue: string;

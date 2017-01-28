@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormModel } from './form.model';
 
 @Component({
 	selector: 'my-form',
@@ -19,7 +20,7 @@ export class FormComponent implements OnInit {
 
 	public newValue: string;
 
-	constructor( private fb: FormBuilder ) {
+	constructor( private fb: FormBuilder, public model: FormModel ) {
 		this.createForm();
 		this.dateRequired = false;
 	}
@@ -66,16 +67,8 @@ export class FormComponent implements OnInit {
 		this.myForm.reset();
 	}
 
-	public onPatchValue() {
-		let obj = {
-			'sectionOne': {
-				'textFieldKey': 'text field updated',
-				'textFieldKeyOnlyDigits': '9876543210',
-				'textFieldKeyWithVariableMaxLen': 'some text',
-				'zipCode': '61-251'
-			}
-		}
-		this.myForm.patchValue(obj);
+	public onLoadData() {
+		this.model.load();
 	}
 
     public onRequiredChanged($event) {

@@ -1,6 +1,8 @@
-import {Component, Input, QueryList} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Input, QueryList} from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {BaseControlComponent} from '../../controls/baseControl/basecontrol.component';
+import {Inject} from '@angular/core';
+import {FormModel} from '../form.model';
 
 @Component({
   selector: 'form-section',
@@ -15,9 +17,16 @@ export class FormSectionComponent {
   @Input()
   public label: string = 'My Section';
 
+  @Input()
+  public model: FormModel;
+
   public form: FormGroup;
 
   protected keys: Array<string> = [];
+
+  constructor(private fb: FormBuilder) {
+
+  }
 
   protected hookToModel(form: FormGroup, control: BaseControlComponent) {
     form.addControl(control.modelKey, control.baseCtrl);
@@ -38,14 +47,27 @@ export class FormSectionComponent {
     root.removeControl(this.id);
   }
 
-  protected hookAll(elements: QueryList<BaseControlComponent>, fb: FormBuilder, root: FormGroup) {
+  protected hookAll(elements: QueryList<BaseControlComponent>, root: FormGroup) {
     elements.forEach((control) => {
       this.keys.push(control.modelKey);
       if (!this.form) {
-        this.createForm(fb);
+        this.createForm(this.fb);
       }
       this.hookToModel(this.form, control);
     });
     root.addControl(this.id, this.form);
+  }
+
+  protected initModel() {
+    if (this.model && this.model.get(this.id) != null) {
+      setTimeout(() => {
+        let section = this.model.get(this.id);
+        this.form.patchValue(section);
+      }, 0);
+    }
+  }
+
+  ngAfterViewChecked() {
+    this.initModel();
   }
 }

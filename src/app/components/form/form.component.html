@@ -3,6 +3,7 @@
     <section-one *ngIf="sectionOneVisible==true"
         (requiredChanged)="onRequiredChanged($event)"
         [root]="myForm"
+        [model]="model"
         [label]="'Section One'"        
         [id]="'sectionOne'">
     </section-one>
@@ -10,18 +11,21 @@
     <section-two *ngIf="sectionTwoVisible==true"
         [dateRequired]="dateRequired"
         [root]="myForm"
+        [model]="model"
         [label]="'Section Two'"
         [id]="'sectionTwo'">
     </section-two>
 
     <section-three *ngIf="sectionThreeVisible==true"
         [root]="myForm"
+        [model]="model"
         [label]="'Section Three'"
         [id]="'sectionThree'">
     </section-three>
 
     <section-four *ngIf="sectionFourVisible==true"
         [root]="myForm"
+        [model]="model"
         [label]="'Section Four'"
         [id]="'sectionFour'">
     </section-four>    
@@ -42,7 +46,7 @@
     <a class="btn" (click)="onHideAll()">Hide All</a>
     <a class="btn" (click)="onShowAll()">Show All</a>
     <a class="btn" (click)="onReset()">Reset</a>
-    <a class="btn" (click)="onPatchValue()">Patch Value</a>
+    <a class="btn" (click)="onLoadData()">Load Data</a>
 </div>
 
 <div class="modelLog">
