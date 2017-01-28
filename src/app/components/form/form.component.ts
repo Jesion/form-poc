@@ -17,6 +17,8 @@ export class FormComponent implements OnInit {
 
 	public dateRequired: boolean;
 
+	public newValue: string;
+
 	constructor( private fb: FormBuilder ) {
 		this.createForm();
 		this.dateRequired = false;
@@ -62,6 +64,21 @@ export class FormComponent implements OnInit {
 
 	public onReset() {
 		this.myForm.reset();
+	}
+
+	public onPatchValue() {
+		let obj = {
+			'sectionOne': {
+				'textFieldKey': 'text field updated',
+				'textFieldKeyOnlyDigits': '9876543210',
+				'textFieldKeyWithVariableMaxLen': 'some text',
+				'zipCode': '61-251'
+			},
+			'sectionTwo': {
+				'sectionTwoDate': '2010-01-01'
+			}
+		}
+		this.myForm.patchValue(obj);
 	}
 
     public onRequiredChanged($event) {
