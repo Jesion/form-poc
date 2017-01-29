@@ -19,7 +19,7 @@ export function createCounterRangeValidator(maxValue, minValue) {
 @Component({
   selector: 'counter-input',
   template: `
-    <button (click)="increase()">+</button> {{counterValue}} <button (click)="decrease()">-</button>
+    <button (click)="increase()">+</button><input type="text" [value]="counterValue"/><button (click)="decrease()">-</button>
   `,
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CounterInputComponent), multi: true },
@@ -39,7 +39,7 @@ export class CounterInputComponent implements ControlValueAccessor, OnChanges, I
   private _baseCtrl: FormControl;
 
   constructor() {
-    this._baseCtrl = new FormControl( this.counterValue );
+    this._baseCtrl = new FormControl();
   }
 
   get baseCtrl(): FormControl {

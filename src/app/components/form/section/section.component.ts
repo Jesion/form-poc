@@ -30,8 +30,8 @@ export class FormSectionComponent {
 
   protected keys: Array<string> = [];
 
-  constructor(private fb: FormBuilder) {
-
+  constructor(private fb: FormBuilder) {      
+    this.createForm(this.fb);     
   }
 
   protected hookToModel(form: FormGroup, control: IControl) {
@@ -56,9 +56,6 @@ export class FormSectionComponent {
   protected hookAll(elements: QueryList<IControl>, root: FormGroup) {
     elements.forEach((control) => {
       this.keys.push(control.modelKey);
-      if (!this.form) {
-        this.createForm(this.fb);
-      }
       this.hookToModel(this.form, control);
     });
     root.addControl(this.id, this.form);
