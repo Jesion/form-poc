@@ -1,8 +1,7 @@
 <div class="row" [attr.id]="sectionId && modelKey">      
     <label>{{label}}</label>
     <input type="text"
-        maxlength="{{maxLen}}"
-        [(ngModel)]="maskedValue"
+        maxlength="{{maxLen}}"      
         [formControl]="baseCtrl"
         (keyup)="onKeyUp($event)"
         (keypress)="onKeyPress($event)"

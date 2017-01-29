@@ -76,11 +76,9 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit, OnCha
 
   @Input()
   public set initialValue(value: string) {
-    if (this.innerValue !== value) {
-        this.innerValue = value;
-        this.maskedValue = this.doMask(value);
-        this.onChangeCallback(value);
-    }
+    this.innerValue = value;
+    this.maskedValue = this.doMask(value);
+    this.onChangeCallback(value);
   }
 
   @Input()
@@ -201,7 +199,6 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit, OnCha
   }
 
   doMask(v: string) {
-    /*
     if (this.innerMask != null) {
       if (v && this.innerMask && this.innerMask.parts.length > 0) {
           let masked: string = '';
@@ -220,8 +217,7 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit, OnCha
           }
           return masked;
       }
-    }
-    */
+    }    
     return v;
   }
 
