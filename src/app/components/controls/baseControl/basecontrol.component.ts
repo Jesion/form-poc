@@ -1,6 +1,7 @@
-import {Component, forwardRef, Input, Output, AfterViewInit, OnInit, EventEmitter} from '@angular/core';
+import {Component, forwardRef, Input, Output, AfterViewInit, OnInit, OnChanges, EventEmitter} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, Validators} from '@angular/forms';
 import {MaskPart, Mask, Restrict} from './basecontrol.mask';
+import {IControl} from '../control';
 
 const noop = () => {
 
@@ -18,7 +19,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['app/components/controls/baseControl/basecontrol.component.css'],
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class BaseControlComponent implements ControlValueAccessor, OnInit {
+export class BaseControlComponent implements ControlValueAccessor, OnInit, OnChanges, IControl {
 
   @Input()
   public label: string = 'My Control';
@@ -75,9 +76,11 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
 
   @Input()
   public set initialValue(value: string) {
-    this.innerValue = value;
-    this.maskedValue = this.doMask(value);
-    this.onChangeCallback(value);
+    if (this.innerValue !== value) {
+        this.innerValue = value;
+        this.maskedValue = this.doMask(value);
+        this.onChangeCallback(value);
+    }
   }
 
   @Input()
@@ -134,6 +137,10 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
     this.setValidators();
   }
 
+  ngOnChanges() {
+
+  }
+
   get value(): any {
     return this.innerValue;
   };
@@ -181,7 +188,7 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.maskedValue = this.doMask(value);
-      this.innerValue = value;
+      this.innerValue = value;      
     }
   }
 
@@ -194,6 +201,7 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
   }
 
   doMask(v: string) {
+    /*
     if (this.innerMask != null) {
       if (v && this.innerMask && this.innerMask.parts.length > 0) {
           let masked: string = '';
@@ -213,6 +221,7 @@ export class BaseControlComponent implements ControlValueAccessor, OnInit {
           return masked;
       }
     }
+    */
     return v;
   }
 

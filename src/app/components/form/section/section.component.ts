@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder} from '@angular/forms';
 import {BaseControlComponent} from '../../controls/baseControl/basecontrol.component';
 import {Inject} from '@angular/core';
 import {FormModel} from '../form.model';
+import {IControl} from '../../controls/control';
 
 @Component({
   selector: 'form-section',
@@ -23,7 +24,7 @@ export class FormSectionComponent {
   @Input()
   public root: FormGroup;
 
-  public elements: QueryList<BaseControlComponent>;	
+  public elements: QueryList<IControl>;	
 
   public form: FormGroup;
 
@@ -33,7 +34,7 @@ export class FormSectionComponent {
 
   }
 
-  protected hookToModel(form: FormGroup, control: BaseControlComponent) {
+  protected hookToModel(form: FormGroup, control: IControl) {
     form.addControl(control.modelKey, control.baseCtrl);
   }
 
@@ -52,7 +53,7 @@ export class FormSectionComponent {
     root.removeControl(this.id);
   }
 
-  protected hookAll(elements: QueryList<BaseControlComponent>, root: FormGroup) {
+  protected hookAll(elements: QueryList<IControl>, root: FormGroup) {
     elements.forEach((control) => {
       this.keys.push(control.modelKey);
       if (!this.form) {
@@ -64,12 +65,11 @@ export class FormSectionComponent {
     this.initModel();
   }
 
+  public section: Object = {};
+
   protected initModel() {
     if (this.model && this.model.get(this.id) != null) {
-      setTimeout(() => {
-        let section = this.model.get(this.id);
-        this.form.patchValue(section);
-      }, 0);
+      this.section = this.model.get(this.id);
     }
   }
 

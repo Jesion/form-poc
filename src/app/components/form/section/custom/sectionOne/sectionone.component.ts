@@ -2,6 +2,7 @@ import { Component, Input, Output, QueryList, ViewChildren, AfterViewInit, OnDes
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
+import { IControl } from '../../../../controls/control';
 
 @Component({
   selector: 'section-one',
@@ -11,7 +12,7 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
 export class SectionOneComponent extends FormSectionComponent {
 
   @ViewChildren('sectionOne')
-  public set sectionOneElements(value: QueryList<BaseControlComponent>) {
+  public set sectionOneElements(value: QueryList<IControl>) {
     this.elements = value;
   }
 
@@ -36,4 +37,10 @@ export class SectionOneComponent extends FormSectionComponent {
   constructor( fb: FormBuilder ) {
     super( fb );
   }
+
+  counterValue = 20;
+
+  minValue = 1;
+
+  maxValue = 30;
 }

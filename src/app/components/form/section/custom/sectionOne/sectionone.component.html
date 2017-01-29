@@ -27,12 +27,16 @@
         <input (click)="maxLen=5" id="maxLenCase5" name="maxLenCase" type="radio"/>
         <label for="maxLenCase5">5 chars</label>
     </p>
-    <zipcode-control
-            #sectionOne
+    <zipcode-control #sectionOne
             [sectionId]="id"
             [label]="'Zip Code'"
-            [modelKey]="'zipCode'">
+            [modelKey]="'zipCode'"
+            [initialValue]="'20201'">
     </zipcode-control>
+    <counter-input #sectionOne [modelKey]="'myCounter'"       
+        [counterRangeMax]="maxValue"
+        [counterRangeMin]="minValue"
+        [counterValue]="counterValue"></counter-input>
     <p>
         <label>Choose Section 2 Date Field requirement:</label>
         <input type="radio" id="rf" [(ngModel)]="requiredField" [value]="true"/>

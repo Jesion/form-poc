@@ -2,6 +2,7 @@ import { Component, Input, QueryList, ViewChildren, AfterViewInit, OnDestroy } f
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormSectionComponent } from '../../section.component';
 import { BaseControlComponent } from '../../../../controls/baseControl/basecontrol.component';
+import { IControl } from '../../../../controls/control';
 
 @Component({
   selector: 'section-four',
@@ -11,7 +12,7 @@ import { BaseControlComponent } from '../../../../controls/baseControl/basecontr
 export class SectionFourComponent extends FormSectionComponent {
 
   @ViewChildren('sectionFour')
-  public set sectionElements(value: QueryList<BaseControlComponent>) {
+  public set sectionElements(value: QueryList<IControl>) {
     this.elements = value;
   }
 

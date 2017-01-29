@@ -2,6 +2,7 @@
     <label>{{label}}</label>
     <input type="text"
         maxlength="{{maxLen}}"
+        [(ngModel)]="maskedValue"
         [formControl]="baseCtrl"
         (keyup)="onKeyUp($event)"
         (keypress)="onKeyPress($event)"

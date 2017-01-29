@@ -17,6 +17,7 @@ import { NameControlComponent } from './components/controls/name.component';
 import { TextControlComponent } from './components/controls/text.component';
 import { ControlErrorComponent } from './components/controls/error/error.component';
 import { ZipCodeControlComponent } from './components/controls/zipcode.component';
+import { CounterInputComponent } from './components/controls/counter.component';
 import { FormModel } from './components/form/form.model';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormModel } from './components/form/form.model';
         SectionOneComponent,
         SectionTwoComponent,
         SectionThreeComponent,
-        SectionFourComponent
+        SectionFourComponent,
+        CounterInputComponent
     ],
     imports: [ 
         routing,
