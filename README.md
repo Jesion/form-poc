@@ -1,6 +1,6 @@
 # Dynamic Form POC.
 
-[Demo](http://demo.robertjesionek.com/myform)
+[Demo](http://forms-demo.robertjesionek.com/myform)
 
 # building and running it
 
